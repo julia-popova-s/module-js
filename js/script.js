@@ -1,28 +1,121 @@
-'use strict';
+"use strict";
 
 let money = 70000;
 let profit = "Фриланс";
 let expenses = "Питание, Проезд, Развлечения, Медицина";
-let purpose = 50000;
+let purpose = 100000;
 let period = 6;
-
-console.log(typeof money, typeof profit);
-console.log(expenses.length);
-console.log(`Месячный бюджет равен ${money} рублей`);
-console.log(`Период равен ${period} месяцев`);
-console.log(`Цель заработать ${purpose} рублей`);
-
 let budgetDay = Math.floor(money / 30);
-console.log(`Дневной бюджет равен ${budgetDay} рублей`);
 
-/*усложненное задание*/
+money = +prompt("Ваш месячный доход (руб)?", 100000);
+console.log(`Месячный доход равен ${money} рублей`);
 
-let newExpenses = expenses.toLowerCase();
-console.log(newExpenses);
+purpose = +prompt("Сколько хотите накопить (руб)?", 120000);
+console.log(`Цель накопить ${purpose} рублей`);
 
-let newArrExpenses = newExpenses.split(', ');
+expenses = prompt(
+  "Перечислите возможные расходы за рассчитываемый период через запятую. Пример: питание, проезд",
+  "питание, проезд, развлечения, медицина"
+);
+
+let newArrExpenses = expenses.toLowerCase().split(", ");
+console.log("Обязательные статьи расходов:");
 console.log(newArrExpenses);
 
-let amount = [20000, 5000, 5000, 7000];
-console.log('Расходы: ');
-newArrExpenses.forEach((el, key) => console.log(`${el} : ${amount[key]} рублей`));
+let amount = +prompt(
+  "Во сколько обойдуться обязательные статьи расходов (руб)?",
+  60000
+);
+console.log(`Ваши обязательные расходы: ${amount} рублей`);
+
+let deposit = confirm("Есть ли у вас вклад в банке?");
+deposit === true
+  ? console.log("Вклад в банке есть")
+  : console.log("Вклада в банке нет");
+
+let budgetMonth = money - amount;
+console.log(`Ваш месячный бюджет равен ${budgetMonth} рублей`);
+
+period = Math.ceil(purpose / budgetMonth);
+console.log(`За ${period} месяцев(-a) будет достигнуна цель ${purpose} рублей`);
+
+budgetDay = Math.floor(budgetMonth / 30);
+console.log(`Дневной бюджет равен ${budgetDay} рублей`);
+
+//if выглядит читабельней, чем if else
+if (budgetDay > 6000) {
+  console.log("У вас высокий уровень дохода");
+}
+if (budgetDay > 3000 && budgetDay < 6000) {
+  console.log("У вас средний уровень дохода");
+}
+if (budgetDay > 0 && budgetDay < 3000) {
+  console.log("К сожалению у вас уровень дохода ниже среднего");
+}
+if (budgetDay < 0) {
+  console.log("Что-то пошло не так");
+}
+
+/*усложненное задание*/
+const html = document.querySelector("html");
+let lang = html.getAttribute("lang");
+console.log(`Язык страницы ${lang}`);
+
+const method = document.querySelectorAll(".method");
+
+const weekRu = [
+  "Воскресенье",
+  "Понедельник",
+  "Вторник",
+  "Среда",
+  "Четверг",
+  "Пятница",
+  "Суббота",
+];
+const weekEn = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const week = [weekRu, weekEn];
+
+//Метод 1 - через if
+if (lang === "ru") {
+  method[0].innerHTML = `Дни недели: ${week[0]}`;
+}
+if (lang === "en") {
+  method[0].innerHTML = `Weekdays: ${week[1]}`;
+}
+
+//Метод 2 - через switch case
+switch (lang) {
+  case "ru":
+    method[1].innerHTML = `Дни недели: ${week[0]}`;
+    break;
+  case "en":
+    method[1].innerHTML = `Weekdays: ${week[1]}`;
+    break;
+}
+
+//Метод 3 - через массив и тернарный оператор
+lang === "ru"
+  ? (method[2].innerHTML = `Дни недели:  ${week[0]}`)
+  : lang === "en"
+  ? (method[2].innerHTML = `Weekdays: ${week[1]}`)
+  : (method[2].innerHTML = "Язык не определен.");
+
+//Метод 4 - через массив: конкретный день недели, с заменой языка
+lang === "en" ? (html.lang = "ru") : (html.lang = "en");
+
+lang = html.lang;
+console.log(`Язык страницы ${lang}`);
+
+const date = new Date();
+let number = date.getDay();
+lang === "ru"
+  ? (method[3].innerHTML = `Сегодня ${week[0][number].toLowerCase()}!`)
+  : (method[3].innerHTML = `Today is ${week[1][number].toLowerCase()}!`);
