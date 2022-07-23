@@ -46,20 +46,20 @@ console.log(`Дневной бюджет равен ${budgetDay} рублей`);
 if (budgetDay > 6000) {
   console.log("У вас высокий уровень дохода");
 }
-if (budgetDay > 3000 && budgetDay < 6000) {
+if (budgetDay >= 3000 && budgetDay <= 6000) {
   console.log("У вас средний уровень дохода");
 }
-if (budgetDay > 0 && budgetDay < 3000) {
-  console.log("К сожалению у вас уровень дохода ниже среднего");
+if (budgetDay >= 0 && budgetDay < 3000) {
+  console.log("К сожалению, у вас уровень дохода ниже среднего");
 }
 if (budgetDay < 0) {
   console.log("Что-то пошло не так");
 }
 
 /*усложненное задание*/
-const html = document.querySelector("html");
-let lang = html.getAttribute("lang");
-console.log(`Язык страницы ${lang}`);
+const htmlTag = document.querySelector("html");
+let language = htmlTag.getAttribute("lang");
+console.log(`Язык страницы ${language}`);
 
 const method = document.querySelectorAll(".method");
 
@@ -83,16 +83,17 @@ const weekEn = [
 ];
 const week = [weekRu, weekEn];
 
+
 //Метод 1 - через if
-if (lang === "ru") {
+if (language === "ru") {
   method[0].innerHTML = `Дни недели: ${week[0]}`;
 }
-if (lang === "en") {
+if (language === "en") {
   method[0].innerHTML = `Weekdays: ${week[1]}`;
 }
 
 //Метод 2 - через switch case
-switch (lang) {
+switch (language) {
   case "ru":
     method[1].innerHTML = `Дни недели: ${week[0]}`;
     break;
@@ -102,20 +103,20 @@ switch (lang) {
 }
 
 //Метод 3 - через массив и тернарный оператор
-lang === "ru"
+language === "ru"
   ? (method[2].innerHTML = `Дни недели:  ${week[0]}`)
-  : lang === "en"
+  : language === "en"
   ? (method[2].innerHTML = `Weekdays: ${week[1]}`)
   : (method[2].innerHTML = "Язык не определен.");
 
 //Метод 4 - через массив: конкретный день недели, с заменой языка
-lang === "en" ? (html.lang = "ru") : (html.lang = "en");
+language === "en" ? (htmlTag.lang = "ru") : (htmlTag.lang = "en");
 
-lang = html.lang;
-console.log(`Язык страницы ${lang}`);
+language = htmlTag.lang;
+console.log(`Язык страницы ${language}`);
 
 const date = new Date();
-let number = date.getDay();
-lang === "ru"
-  ? (method[3].innerHTML = `Сегодня ${week[0][number].toLowerCase()}!`)
-  : (method[3].innerHTML = `Today is ${week[1][number].toLowerCase()}!`);
+let dayNumber = date.getDay();
+language === "ru"
+  ? (method[3].innerHTML = `Сегодня ${week[0][dayNumber].toLowerCase()}!`)
+  : (method[3].innerHTML = `Today is ${week[1][dayNumber].toLowerCase()}!`);
