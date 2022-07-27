@@ -29,9 +29,7 @@ let amount = +prompt(
 console.log(`Ваши обязательные расходы: ${amount} рублей`);
 
 let deposit = confirm("Есть ли у вас вклад в банке?");
-deposit === true
-  ? console.log("Вклад в банке есть")
-  : console.log("Вклада в банке нет");
+deposit ? console.log("Вклад в банке есть") : console.log("Вклада в банке нет");
 
 let budgetMonth = money - amount;
 console.log(`Ваш месячный бюджет равен ${budgetMonth} рублей`);
@@ -83,40 +81,37 @@ const weekEn = [
 ];
 const week = [weekRu, weekEn];
 
-
 //Метод 1 - через if
 if (language === "ru") {
-  method[0].innerHTML = `Дни недели: ${week[0]}`;
+  method[0].innerText = `Дни недели: ${week[0]}`;
 }
 if (language === "en") {
-  method[0].innerHTML = `Weekdays: ${week[1]}`;
+  method[0].innerText = `Weekdays: ${week[1]}`;
 }
 
 //Метод 2 - через switch case
 switch (language) {
   case "ru":
-    method[1].innerHTML = `Дни недели: ${week[0]}`;
+    method[1].innerText = `Дни недели: ${week[0]}`;
     break;
   case "en":
-    method[1].innerHTML = `Weekdays: ${week[1]}`;
+    method[1].innerText = `Weekdays: ${week[1]}`;
     break;
 }
 
-//Метод 3 - через массив и тернарный оператор
-language === "ru"
-  ? (method[2].innerHTML = `Дни недели:  ${week[0]}`)
-  : language === "en"
-  ? (method[2].innerHTML = `Weekdays: ${week[1]}`)
-  : (method[2].innerHTML = "Язык не определен.");
-
-//Метод 4 - через массив: конкретный день недели, с заменой языка
-language === "en" ? (htmlTag.lang = "ru") : (htmlTag.lang = "en");
-
+//Метод 3 - через массив: конкретный день недели, с заменой языка
+if (language === "en") {
+  htmlTag.lang = "ru";
+} else {
+  htmlTag.lang = "en";
+}
 language = htmlTag.lang;
 console.log(`Язык страницы ${language}`);
 
 const date = new Date();
 let dayNumber = date.getDay();
-language === "ru"
-  ? (method[3].innerHTML = `Сегодня ${week[0][dayNumber].toLowerCase()}!`)
-  : (method[3].innerHTML = `Today is ${week[1][dayNumber].toLowerCase()}!`);
+if (language === "ru") {
+  method[2].innerText = `Сегодня ${week[0][dayNumber].toLowerCase()}!`;
+} else {
+  method[2].innerText = `Today is ${week[1][dayNumber].toLowerCase()}!`;
+}
