@@ -44,17 +44,13 @@ const app = () => {
   /*lesson-04*/
 
   /* Объявить функцию getAccumulatedIncome. Возврат накоплений за месяц (Доходы минус расходы)*/
-  const getAccumulatedIncome = function (money, extraMoney, amount) {
-    return money + extraMoney - amount;
-  };
+  const getAccumulatedIncome = (money, extraMoney, amount) => money + extraMoney - amount;
 
   /* Объявить переменную accumulatedIncome и присвоить результат от getAccumulatedIncome*/
   let accumulatedIncome = getAccumulatedIncome(money, extraMoney, amount);
 
   /*Объявить функцию getTargetMonth. Подсчитать, за какой период будет достигнута цель, зная результат месячного накопления (getAccumulatedIncome)*/
-  const getTargetMonth = function (purpose, income) {
-    return Math.ceil(purpose / income);
-  };
+  const getTargetMonth = (purpose, income) => Math.ceil(purpose / income);
 
   /*budgetDay рассчитываем исходя из значения месячного накопления (accumulatedIncome)*/
   budgetDay = Math.floor(accumulatedIncome / 30);
@@ -76,17 +72,10 @@ const app = () => {
   console.clear();
 
   console.log(
-    `Ваш бюджет на месяц с учетом Ваших расходов составляет: ${getAccumulatedIncome(
-      money,
-      extraMoney,
-      amount
-    )} рублей`
+    `Ваш бюджет на месяц с учетом Ваших расходов составляет: ${getAccumulatedIncome(money, extraMoney, amount)} рублей`
   );
   console.log(
-    `Ваща цель накопить ${purpose} с учетом Ваших расходов будет достигнута через ${getTargetMonth(
-      purpose,
-      accumulatedIncome
-    )} месяца(-ев)`
+    `Ваща цель накопить ${purpose} с учетом Ваших расходов будет достигнута через ${getTargetMonth(purpose, accumulatedIncome)} месяца(-ев)`
   );
   console.log(`Дневной бюджет ${budgetDay} рублей`);
 };
