@@ -3,43 +3,70 @@
 Программа должны быть выполнена с помощью рекурсии, без единого цикла. 
 Загаданное число должно храниться «в замыкании» */
 "use strict";
-const app = () => {
-  let numberPuzzle = Math.floor(Math.random() * 11);
-  let guess = 5;
-  const checkUserNumber = () => {
-    let userAttempt = prompt("Угадай число от 1 до 10");
-    let userAttemptNum = +userAttempt;
 
-    if (userAttempt === null) {
+const guessGame = () => {
+  let numberPuzzle = Math.floor(Math.random() * 10 + 1);
+  let attempt = 5;
+  let residue;
+
+  const checkUserNumber = () => {
+    let userAnswer = prompt("Угадай число от 1 до 10");
+    let userAnswerNum = +userAnswer;
+
+    const checkNumberOfAttempts = (attempt) => {
+      if (attempt <= 0) {
+        let answer = confirm("Попытки закончились, хотите сыграть еще?");
+        if (answer) {
+          guessGame();
+        } else {
+          alert("Игра окончена");
+          return false;
+        }
+      }
+      return true;
+    };
+
+    if (userAnswer === null) {
       alert("Игра окончена");
       return;
     }
-    if (userAttemptNum > 10 || userAttempt === "" || userAttemptNum < 0) {
+    if (userAnswerNum > 10 || userAnswer === "" || userAnswerNum <= 0 || isNaN(userAnswerNum)) {
       alert("Введите число от 1 до 10");
       checkUserNumber();
     }
-    if (isNaN(userAttemptNum)) {
-      alert("Введи число!");
-      checkUserNumber();
+    if (userAnswerNum > numberPuzzle && userAnswerNum != 0) {
+      attempt--;
+      if (checkNumberOfAttempts(attempt)) {
+        alert(`Загаданное число МЕНЬШЕ. Осталось попыток ${attempt}`);
+        checkUserNumber();
+      }
     }
-    if (userAttemptNum > numberPuzzle) {
-      guess--;
-      alert(`Загаданное число меньше. Осталось попыток: ${guess}`);
-      checkUserNumber();
-    }
-    if (userAttemptNum < numberPuzzle) {
-      guess--;
-      alert(`Загаданное число больше. Осталось попыток: ${guess}`);
-      checkUserNumber();
+    if (userAnswerNum < numberPuzzle && userAnswerNum != 0) {
+      attempt--;
+      if (checkNumberOfAttempts(attempt)) {
+        alert(`Загаданное число БОЛЬШЕ. Осталось попыток ${attempt}`);
+        checkUserNumber();
+      }
     }
 
-    if (userAttemptNum === numberPuzzle) {
-      alert(`Поздравляю, Вы угадали за ${5 - guess} попытки!`);
+    if (userAnswerNum === numberPuzzle) {
+      attempt--;
+      if (checkNumberOfAttempts(attempt)) {
+        let answer = confirm(`Поздравляю, Вы угадали c ${5 - attempt} попытки! Хотели бы сыграть еще?`);
+        if (answer) {
+          guessGame();
+        } else {
+          alert("Игра окончена");
+          return;
+        }
+      }
       return;
     }
-    console.log(userAttemptNum);
+    console.log(userAnswerNum);
+    return;
   };
 
   checkUserNumber();
+  return;
 };
-app();
+guessGame();
