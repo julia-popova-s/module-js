@@ -23,7 +23,7 @@ const guessGame = () => {
     let userAnswer = numberUser.value;
     let userAnswerNum = +userAnswer;
     const getBtnRepeat = () => {
-      repeatBtn.classList = "btn_repeat_visibile";
+      repeatBtn.classList.add("btn_repeat_visibile");
       repeatBtn.addEventListener("click", guessGame);
       repeatBtn.addEventListener("click", () => (numberUser.value = ""));
     };
