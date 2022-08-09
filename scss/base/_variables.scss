@@ -1,0 +1,20 @@
+$color-primary: #EF7F04;
+$color-btn: #3B3A63;
+$white: #FEFEFE;
+$black: #000000;
+$color-text: #2F2F51;
+$color-back: #F2F2F2;
+$color-placeholder: #424268;
+$color-link: #4B67AF;
+$border-rad: 3px;
+$color-dot: #BABABA;
+$color-input: #E2E2E2;
+$color-details: #EEEEF3;
+$color-bg: #1B2473;
+
+@mixin fontSetContent($weight, $size, $height, $color) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
+  color: $color;
+}

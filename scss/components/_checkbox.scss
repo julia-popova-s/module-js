@@ -1,0 +1,53 @@
+.checkbox {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  &__mark {
+    opacity: 0;
+  }
+
+  &__label {
+    @include fontSetContent(400, 14px, 16px, #787878);
+    text-align: left;
+    position: relative;
+    padding-left: 10px;
+
+    &::after,
+    &::before {
+      position: absolute;
+      display: inline-block;
+    }
+
+    &::before {
+      content: "";
+      height: 24px;
+      width: 24px;
+      box-sizing: border-box;
+
+      top: 0;
+      left: -24px;
+      background-color: #FFFFFF;
+      border: 2px solid #787878;
+      border-radius: 7px;
+    }
+
+    &::after {
+      content: url('../img/vector.svg');
+      left: -20px;
+      top: 7px;
+    }
+  }
+
+  &__link {
+    color: $color-link;
+  }
+}
+
+.checkbox .checkbox__mark+.checkbox__label::after {
+  content: none;
+}
+
+.checkbox .checkbox__mark:checked+.checkbox__label::after {
+  content: url('../img/vector.svg');
+}

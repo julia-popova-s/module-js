@@ -1,0 +1,18 @@
+html {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  @include fontSetContent(400, 16px, 19px, $black);
+  background-color: $color-bg;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 0 20px;
+}

@@ -1,78 +1,45 @@
 "use strict";
-
 const app = () => {
-  let money = 70000;
-  let profit = "Фриланс, репетиторство";
-  let purpose = 100000;
-  let budgetDay = Math.floor(money / 30);
-
-  const getMessageError = (message) => {
-    let money = +prompt(message);
-    while (isNaN(money)) {
-      alert("Введите число!");
-      money = +prompt(message);
+  function validateEmail(email) {
+    const reg =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return reg.test(String(email).toLowerCase());
+  }
+  const formReg = document.querySelector(".registration-form");
+  const inputs = formReg.querySelectorAll(".registration-form__input");
+  const labels = formReg.querySelectorAll(".registration-form__label");
+  const buttonReg = formReg.querySelector(".registration-form__btn");
+  const userEmail = inputs[0];
+  const userParol = inputs[1];
+  const checkbox = formReg.querySelector(".checkbox");
+  const checkboxMark = formReg.querySelector(".checkbox__mark");
+  const checkboxLabel = formReg.querySelector(".checkbox__label");
+  console.log(checkboxLabel.style);
+  buttonReg.addEventListener("click", (e) => {
+    e.preventDefault();
+    let message;
+    const checkEmpty = (element, message) => {
+      // message = "<p class='registration-form__message'>Поле обязательно для заполнения</p>";
+      element.insertAdjacentHTML("afterend", message);
+      element.classList.add("registration-form__input_color_red");
+    };
+    if (userEmail.value === "") {
+      message = "<p class='registration-form__message'>Поле обязательно для заполнения</p>";
+      userEmail.insertAdjacentHTML("afterend", message);
+      userEmail.classList.add("registration-form__input_border_red");
+      labels[0].classList.add("invalid");
     }
-    return money;
-  };
-
-  money = getMessageError("Ваш месячный доход (руб)?");
-  purpose = +prompt("Сколько хотите накопить (руб)?", 150000);
-
-  let amount = getMessageError("Во сколько обойдуться обязательные статьи расходов (руб)?");
-  let extraMoney = getMessageError(
-    `Перечислите возможный доход за ваши дополнительные работы (руб): ${profit.toLowerCase()}?`
-  );
-
-  const getAccumulatedIncome = (money, extraMoney, amount) => money + extraMoney - amount;
-  let accumulatedIncome = getAccumulatedIncome(money, extraMoney, amount);
-
-  const getTargetMonth = (purpose, income) => {
-    let targetMonth = Math.ceil(purpose / income);
-    if (targetMonth > 0 && targetMonth != Infinity) console.log("Цель будет достигнута");
-    if (targetMonth <= 0 || targetMonth === Infinity) console.log("Цель не будет достигнута");
-    return targetMonth;
-  };
-
-  budgetDay = Math.floor(accumulatedIncome / 30);
-  console.log(
-    `Ваш бюджет на месяц с учетом Ваших расходов составляет: ${getAccumulatedIncome(money, extraMoney, amount)} рублей`
-  );
-  console.log(
-    `Ваща цель накопить ${purpose} рублей с учетом Ваших расходов будет достигнута через ${getTargetMonth(
-      purpose,
-      accumulatedIncome
-    )} месяца(-ев)`
-  );
-  console.log(`Дневной бюджет ${budgetDay} рублей`);
+    if (userParol.value === "") {
+      message = "<p class='registration-form__message'>Поле обязательно для заполнения</p>";
+      userParol.insertAdjacentHTML("afterend", message);
+      userParol.classList.add("registration-form__input_border_red");
+      labels[1].classList.add("invalid");
+    }
+    if (!checkboxMark.cheked) {
+      message = "<p class='registration-form__message'>Поле обязательно для заполнения</p>";
+      checkbox.insertAdjacentHTML("afterend", message);
+    }
+    return;
+  });
 };
-
 app();
-console.log("_____________________");
-
-/*усложненное задание*/
-
-const getNumbers = () => {
-  const numbers = [];
-  numbers.push("28", "58", "35", "48", "35", "42", "78");
-  console.log(`Исходный массив: ${numbers}`);
-
-  let numbersFiltered = numbers.filter((item) => item[0] === "4" || item[0] === "2");
-  console.log(`Элементы массива начинаются с цифр 2 и 4: ${numbersFiltered}`);
-};
-
-getNumbers();
-
-const getUserString = (str) => {
-  let userString = str.trim();
-  if (typeof str === "string" && userString.length < 30) {
-    console.log(`Вы ввели строку: ${userString}`);
-  }
-  if (typeof str === "string" && userString.length >= 30) {
-    console.log(`Вы ввели строку: ${userString.slice(0, 30)}...`);
-    console.log(`Длина видимой части строки ${userString.slice(0, 30).length}`);
-  }
-};
-getUserString("  яблоко    ");
-getUserString(
-  "     Наше дело не так однозначно, как может показаться: сплочённость команды профессионалов однозначно определяет каждого участника как способного принимать собственные решения касаемо переосмысления внешнеэкономических политик.     "
-);

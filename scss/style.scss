@@ -1,0 +1,86 @@
+@import './reset/reset';
+@import './base/variables';
+@import './components/checkbox';
+@import './base/base';
+
+
+
+
+.registration {
+  &-form {
+
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    width: 600px;
+    height: 412px;
+    margin: 82px auto;
+    padding: 30px 45px 0 45px;
+
+
+    &__title {
+      text-align: center;
+
+      @include fontSetContent(700, 50px, 50px, #787878);
+      margin-bottom: 13px;
+    }
+
+    &__label {
+      margin-bottom: 3px;
+      padding-left: 8px;
+      @include fontSetContent(700, 16px, 16px, #787878);
+      position: relative;
+    }
+
+
+    &__input {
+      width: 509px;
+      height: 49px;
+      background: #FFFFFF;
+      border: 2px solid #787878;
+      border-radius: 10px;
+
+      &_border_red {
+        border: 2px solid #CB2424;
+      }
+    }
+
+    &__label::before {
+      content: url("../img/zv.svg");
+      position: absolute;
+      display: inline-block;
+      left: -10px;
+      top: 20px;
+    }
+
+    .invalid {
+      color: #CB2424;
+    }
+
+    .registration-form__input[class="invalid"]+.registration-form__label::before {
+      content: url("../img/vector.svg");
+      position: absolute;
+      display: inline-block;
+      left: -10px;
+      top: 20px;
+    }
+
+    &__message {
+      @include fontSetContent(500, 10px, 16px, #CB2424)
+    }
+
+    // &__check {
+    //   // margin-bottom: 52px;
+    // }
+
+    &__btn {
+      display: block;
+      margin: 0 auto;
+      width: 180px;
+      height: 52px;
+      background-color: #1A226B;
+      border-radius: 10px;
+      @include fontSetContent(700, 24px, 16px, #FFFFFF);
+    }
+  }
+}
