@@ -60,7 +60,7 @@
       border: 2px solid #CB2424;
     }
 
-    &__message {
+    &__alert {
       @include fontSetContent(500, 10px, 16px, #CB2424)
     }
 

@@ -575,7 +575,7 @@ body {
 .registration-form .checkbox__mark[class~=border_red] + .checkbox__label::before {
   border: 2px solid #CB2424;
 }
-.registration-form__message {
+.registration-form__alert {
   font-weight: 500;
   font-size: 10px;
   line-height: 16px;
