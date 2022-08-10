@@ -8,7 +8,6 @@
 
 .registration {
   &-form {
-
     background-color: #FFFFFF;
     box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
@@ -39,30 +38,26 @@
       background: #FFFFFF;
       border: 2px solid #787878;
       border-radius: 10px;
-
-      &_border_red {
-        border: 2px solid #CB2424;
-      }
     }
 
-    &__label::before {
-      content: url("../img/zv.svg");
-      position: absolute;
-      display: inline-block;
-      left: -10px;
-      top: 20px;
+    .border_red {
+      border: 2px solid #CB2424;
     }
 
     .invalid {
       color: #CB2424;
     }
 
-    .registration-form__input[class="invalid"]+.registration-form__label::before {
-      content: url("../img/vector.svg");
-      position: absolute;
-      display: inline-block;
-      left: -10px;
-      top: 20px;
+    &__label[class~="invalid"]+svg path {
+      fill: #CB2424;
+    }
+
+    &__check[class~="invalid"]>svg path {
+      fill: #CB2424;
+    }
+
+    .checkbox__mark[class~="border_red"]+.checkbox__label::before {
+      border: 2px solid #CB2424;
     }
 
     &__message {

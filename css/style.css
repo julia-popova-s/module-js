@@ -560,25 +560,20 @@ body {
   border: 2px solid #787878;
   border-radius: 10px;
 }
-.registration-form__input_border_red {
+.registration-form .border_red {
   border: 2px solid #CB2424;
-}
-.registration-form__label::before {
-  content: url("../img/zv.svg");
-  position: absolute;
-  display: inline-block;
-  left: -10px;
-  top: 20px;
 }
 .registration-form .invalid {
   color: #CB2424;
 }
-.registration-form .registration-form__input[class=invalid] + .registration-form__label::before {
-  content: url("../img/vector.svg");
-  position: absolute;
-  display: inline-block;
-  left: -10px;
-  top: 20px;
+.registration-form__label[class~=invalid] + svg path {
+  fill: #CB2424;
+}
+.registration-form__check[class~=invalid] > svg path {
+  fill: #CB2424;
+}
+.registration-form .checkbox__mark[class~=border_red] + .checkbox__label::before {
+  border: 2px solid #CB2424;
 }
 .registration-form__message {
   font-weight: 500;
