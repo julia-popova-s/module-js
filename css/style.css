@@ -458,7 +458,6 @@ textarea {
 
 .checkbox {
   display: flex;
-  justify-content: center;
   gap: 10px;
 }
 .checkbox__mark {
@@ -471,7 +470,7 @@ textarea {
   color: #787878;
   text-align: left;
   position: relative;
-  padding-left: 10px;
+  padding-left: 5px;
 }
 .checkbox__label::after, .checkbox__label::before {
   position: absolute;
@@ -482,19 +481,20 @@ textarea {
   height: 24px;
   width: 24px;
   box-sizing: border-box;
-  top: 0;
-  left: -24px;
+  top: -5px;
+  left: -29px;
   background-color: #FFFFFF;
   border: 2px solid #787878;
   border-radius: 7px;
 }
 .checkbox__label::after {
   content: url("../img/vector.svg");
-  left: -20px;
-  top: 7px;
+  left: -27px;
+  top: 0px;
 }
 .checkbox__link {
-  color: #4B67AF;
+  color: #787878;
+  text-decoration: underline;
 }
 
 .checkbox .checkbox__mark + .checkbox__label::after {
@@ -534,7 +534,7 @@ body {
   width: 600px;
   height: 412px;
   margin: 82px auto;
-  padding: 30px 45px 0 45px;
+  padding: 30px 40px 0 32px;
 }
 .registration-form__title {
   text-align: center;
@@ -546,7 +546,7 @@ body {
 }
 .registration-form__label {
   margin-bottom: 3px;
-  padding-left: 8px;
+  padding-left: 20px;
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
@@ -559,12 +559,37 @@ body {
   background: #FFFFFF;
   border: 2px solid #787878;
   border-radius: 10px;
+  box-sizing: border-box;
+}
+.registration-form__input::-moz-placeholder {
+  padding-left: 15px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  color: #CCCCCC;
+}
+.registration-form__input:-ms-input-placeholder {
+  padding-left: 15px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  color: #CCCCCC;
+}
+.registration-form__input::placeholder {
+  padding-left: 15px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  color: #CCCCCC;
 }
 .registration-form .border_red {
   border: 2px solid #CB2424;
 }
 .registration-form .invalid {
   color: #CB2424;
+}
+.registration-form svg {
+  margin-bottom: 13px;
 }
 .registration-form__label[class~=invalid] + svg path {
   fill: #CB2424;
@@ -580,6 +605,8 @@ body {
   font-size: 10px;
   line-height: 16px;
   color: #CB2424;
+  margin-bottom: 13px;
+  padding-left: 13px;
 }
 .registration-form__btn {
   display: block;
@@ -592,4 +619,86 @@ body {
   font-size: 24px;
   line-height: 16px;
   color: #FFFFFF;
+}
+
+.input-form {
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  width: 600px;
+  height: 412px;
+  margin: 82px auto;
+  padding: 30px 40px 0 32px;
+}
+.input-form__title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 50px;
+  color: #787878;
+  margin-bottom: 13px;
+}
+.input-form__label {
+  margin-bottom: 3px;
+  padding-left: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  color: #787878;
+  position: relative;
+}
+.input-form__input {
+  width: 509px;
+  height: 49px;
+  background: #FFFFFF;
+  border: 2px solid #787878;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin-bottom: 32px;
+}
+.input-form__input::-moz-placeholder {
+  padding-left: 15px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  color: #CCCCCC;
+}
+.input-form__input:-ms-input-placeholder {
+  padding-left: 15px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  color: #CCCCCC;
+}
+.input-form__input::placeholder {
+  padding-left: 15px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  color: #CCCCCC;
+}
+.input-form .border_red {
+  border: 2px solid #CB2424;
+}
+.input-form .invalid {
+  color: #CB2424;
+}
+.input-form__btn {
+  display: block;
+  margin: 0 auto;
+  width: 180px;
+  height: 52px;
+  background-color: #1A226B;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 16px;
+  color: #FFFFFF;
+}
+
+.input-form__check-label {
+  padding-left: 10px;
+}
+.input-form__check-label::before {
+  left: -23px;
 }/*# sourceMappingURL=style.css.map */

@@ -34,7 +34,7 @@
             />
           </svg>
 
-          <input class="registration-form__input" type="text" />
+          <input class="registration-form__input" type="text" placeholder="Введите email" />
           <p class="registration-form__alert"></p>
 
           <div class="registration-form__label">Пароль</div>
@@ -52,7 +52,7 @@
             />
           </svg>
 
-          <input class="registration-form__input" type="text" />
+          <input class="registration-form__input" placeholder="Введите пароль" type="text" />
           <p class="registration-form__alert"></p>
 
           <div class="checkbox registration-form__check">
@@ -78,6 +78,25 @@
           <p class="registration-form__alert"></p>
 
           <button class="registration-form__btn" type="submit" form="reg">Регистрация</button>
+        </form>
+
+        <form class="input-form" id="input">
+          <h1 class="input-form__title">Вход</h1>
+          <div class="input-form__label">Email</div>
+          <input class="input-form__input" type="text" placeholder="Введите email" />
+          <p class="input-form__alert"></p>
+          <div class="input-form__label">Пароль</div>
+          <input class="input-form__input" placeholder="Введите пароль" type="text" />
+          <p class="input-form__alert"></p>
+          <div class="checkbox input-form__check">
+            <input type="checkbox" class="checkbox__mark" id="checkbox-update" name="rules" />
+            <label class="checkbox__label input-form__check-label" for="checkbox-update">
+              Я согласен получать обновления на почту
+            </label>
+          </div>
+          <p class="input-form__alert"></p>
+
+          <button class="input-form__btn" type="submit" form="reg">Войти</button>
         </form>
       </div>
     </section>

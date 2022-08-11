@@ -40,6 +40,7 @@ const app = () => {
     const userData = {};
 
     //валидация email
+
     if (userEmail.value === "") {
       addClass(userEmail, "border_red", labelEmail, "invalid");
       addMessage("Поле обязательно для заполнения", errorEmail);
@@ -51,6 +52,7 @@ const app = () => {
       userData.email = userEmail.value;
     }
     //валидация password
+
     if (userPassword.value === "") {
       addClass(userPassword, "border_red", labelPassword, "invalid");
       addMessage("Поле обязательно для заполнения", errorPassword);
@@ -85,12 +87,14 @@ const app = () => {
     });
 
     if (validateEmail(userEmail.value) && userPassword.value.length >= 8 && checkboxMark.checked) {
+      console.log("Данные пользователя:");
       console.log(userData);
       inputs.forEach((item) => (item.value = ""));
+      checkboxMark.checked = false;
     }
-
     return;
   });
+  return;
 };
 app();
 
