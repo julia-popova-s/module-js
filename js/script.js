@@ -12,16 +12,17 @@ const app = () => {
   const alerts = formReg.querySelectorAll(".registration-form__alert");
 
   const userEmail = inputs[0];
-  const userParol = inputs[1];
+  const userPassword = inputs[1];
   const labelEmail = labels[0];
-  const labelParol = labels[1];
+  const labelPassword = labels[1];
+  const errorEmail = alerts[0];
+  const errorPassword = alerts[1];
+  const errorCheckbox = alerts[2];
 
   const checkbox = formReg.querySelector(".checkbox");
   const checkboxMark = formReg.querySelector(".checkbox__mark");
-  let message = "Поле обязательно для заполнения";
 
-  const checkForEmptyLine = (input, class_input, label, class_label, message) => {
-    alerts.forEach((item) => (item.innerText = message));
+  const addClass = (input, class_input, label, class_label) => {
     input.classList.add(class_input);
     label.classList.add(class_label);
   };
@@ -30,59 +31,71 @@ const app = () => {
     input.classList.remove(class_input);
     label.classList.remove(class_label);
   };
-
-  const removeAlert = (element, event, label) => {
-    element.addEventListener("input", () => {
-      removeClass(element, "border_red", label, "invalid");
-    });
+  const addMessage = (message, alert) => {
+    alert.innerText = message;
   };
 
   buttonReg.addEventListener("click", (e) => {
     e.preventDefault();
-    let counter = 0;
+    const userData = {};
+
+    //валидация email
     if (userEmail.value === "") {
-      checkForEmptyLine(userEmail, "border_red", labelEmail, "invalid", message);
-      alerts[0].innerText = "";
-    }
-    if (!validateEmail(userEmail.value) && userEmail.value != "") {
-      alerts[0].innerText = "Email невалидный";
-    }
-    if (userParol.value === "") {
-      checkForEmptyLine(userParol, "border_red", labelParol, "invalid", message);
-      alerts[1].innerText = "";
-    }
-    if (userParol.value.length < 8 && userParol.value != "") {
-      alerts[1].innerText = "Пароль должен содержать как минимум 8 символов";
-    }
-    if (!checkboxMark.checked) {
-      checkForEmptyLine(checkbox, "invalid", checkboxMark, "border_red", message);
-    }
-    if (checkboxMark.checked) {
-      alerts[2].innerText = "";
-    }
-    if (userEmail.value != "") removeAlert(userEmail, "input", labelEmail);
-    if (userParol.value != "") removeAlert(userParol, "input", labelEmail);
-
-    if (validateEmail(userEmail.value) && userParol.value.length >= 8 && checkboxMark.checked) {
-      alerts.forEach((item) => (item.innerText = ""));
-
-      let userData = {};
+      addClass(userEmail, "border_red", labelEmail, "invalid");
+      addMessage("Поле обязательно для заполнения", errorEmail);
+    } else if (!validateEmail(userEmail.value)) {
+      addClass(userEmail, "border_red", labelEmail, "invalid");
+      addMessage("Email невалидный", errorEmail);
+    } else {
+      addMessage("", errorEmail);
       userData.email = userEmail.value;
-      userData.password = userParol.value;
-
-      console.log(userData);
-      // formReg.submit();
     }
+    //валидация password
+    if (userPassword.value === "") {
+      addClass(userPassword, "border_red", labelPassword, "invalid");
+      addMessage("Поле обязательно для заполнения", errorPassword);
+    } else if (userPassword.value.length < 8) {
+      addClass(userPassword, "border_red", labelPassword, "invalid");
+      addMessage("Пароль должен содержать как минимум 8 символов", errorPassword);
+    } else {
+      userData.password = userPassword.value;
+      addMessage("", errorPassword);
+    }
+
+    //валидация checkbox
+
+    if (!checkboxMark.checked) {
+      addClass(checkbox, "invalid", checkboxMark, "border_red");
+      addMessage("Поле обязательно для заполнения", errorCheckbox);
+    } else {
+      addMessage("", errorCheckbox);
+    }
+
+    userEmail.addEventListener("input", () => {
+      removeClass(userEmail, "border_red", labelEmail, "invalid");
+      addMessage("", errorEmail);
+    });
+    userPassword.addEventListener("input", () => {
+      removeClass(userPassword, "border_red", labelPassword, "invalid");
+      addMessage("", errorPassword);
+    });
     checkboxMark.addEventListener("change", () => {
       removeClass(checkbox, "invalid", checkboxMark, "border_red");
-      alerts[2].innerText = "";
+      addMessage("", errorCheckbox);
     });
+
+    if (validateEmail(userEmail.value) && userPassword.value.length >= 8 && checkboxMark.checked) {
+      console.log(userData);
+      inputs.forEach((item) => (item.value = ""));
+    }
 
     return;
   });
 };
 app();
+
 /*{
+  Для проверки:
     email: johndoe@mail.ru
     password: password 
 */
