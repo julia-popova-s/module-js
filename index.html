@@ -17,9 +17,9 @@
   <body>
     <section class="registration">
       <div class="container">
-        <form class="registration-form" id="reg">
+        <form class="registration-form" id="reg-form">
           <h1 class="registration-form__title">Регистрация</h1>
-          <div class="registration-form__label">Email</div>
+          <label class="registration-form__label">Email</label>
           <svg
             class="registration-form__star"
             width="9"
@@ -37,7 +37,7 @@
           <input class="registration-form__input" type="text" placeholder="Введите email" />
           <p class="registration-form__alert"></p>
 
-          <div class="registration-form__label">Пароль</div>
+          <label class="registration-form__label">Пароль</label>
           <svg
             class="registration-form__star"
             width="9"
@@ -52,7 +52,7 @@
             />
           </svg>
 
-          <input class="registration-form__input" placeholder="Введите пароль" type="text" />
+          <input class="registration-form__input" placeholder="Введите пароль" type="password" />
           <p class="registration-form__alert"></p>
 
           <div class="checkbox registration-form__check">
@@ -77,26 +77,26 @@
           </div>
           <p class="registration-form__alert"></p>
 
-          <button class="registration-form__btn" type="submit" form="reg">Регистрация</button>
+          <button class="registration-form__btn" type="submit" form="reg-form">Регистрация</button>
         </form>
 
-        <form class="input-form" id="input">
-          <h1 class="input-form__title">Вход</h1>
-          <div class="input-form__label">Email</div>
-          <input class="input-form__input" type="text" placeholder="Введите email" />
-          <p class="input-form__alert"></p>
-          <div class="input-form__label">Пароль</div>
-          <input class="input-form__input" placeholder="Введите пароль" type="text" />
-          <p class="input-form__alert"></p>
-          <div class="checkbox input-form__check">
-            <input type="checkbox" class="checkbox__mark" id="checkbox-update" name="rules" />
-            <label class="checkbox__label input-form__check-label" for="checkbox-update">
+        <form class="registration-form input-form" id="input-form">
+          <div class="registration-form__title">Вход</div>
+          <label class="registration-form__label">Email</label>
+          <input class="registration-form__input input-form__input" type="text" placeholder="Введите email" required />
+          <p class="registration-form__alert"></p>
+          <label class="registration-form__label">Пароль</label>
+          <input class="registration-form__input" placeholder="Введите пароль" type="password" />
+          <p class="registration-form__alert"></p>
+          <div class="checkbox registration-form__check">
+            <input type="checkbox" class="checkbox__mark" id="checkbox-input" name="rules" />
+            <label class="checkbox__label input-form__check-label" for="checkbox-input">
               Я согласен получать обновления на почту
             </label>
           </div>
-          <p class="input-form__alert"></p>
+          <p class="registration-form__alert"></p>
 
-          <button class="input-form__btn" type="submit" form="reg">Войти</button>
+          <button class="registration-form__btn" type="submit" form="input-form">Войти</button>
         </form>
       </div>
     </section>

@@ -5,7 +5,7 @@ const app = () => {
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return reg.test(String(email).toLowerCase());
   }
-  const formReg = document.querySelector(".registration-form");
+  const formReg = document.querySelector("#reg-form");
   const inputs = formReg.querySelectorAll(".registration-form__input");
   const labels = formReg.querySelectorAll(".registration-form__label");
   const buttonReg = formReg.querySelector(".registration-form__btn");
@@ -34,10 +34,11 @@ const app = () => {
   const addMessage = (message, alert) => {
     alert.innerText = message;
   };
+  const userData = {};
 
+  //форма регистрации
   buttonReg.addEventListener("click", (e) => {
     e.preventDefault();
-    const userData = {};
 
     //валидация email
 
@@ -91,15 +92,38 @@ const app = () => {
       console.log(userData);
       inputs.forEach((item) => (item.value = ""));
       checkboxMark.checked = false;
+      formReg.style.display = "none";
+      inputForm.style.display = "block";
+      loginDetails[0].value = userData.email;
+      loginDetails[1].value = userData.password;
+      return userData;
     }
-    return;
   });
-  return;
+
+  //работа с формой входа
+  const goUrl = function () {
+    document.location.href = "https://yandex.ru/";
+  };
+  const inputForm = document.querySelector("#input-form");
+  const btnInput = inputForm.querySelector(".registration-form__btn");
+  const loginDetails = inputForm.querySelectorAll(".registration-form__input");
+  // const loginAndPassword = Array.from(loginDetails);
+  // console.log(loginAndPassword);
+  //форма входа
+  btnInput.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (loginDetails[0].value === userData.email && loginDetails[1].value === userData.password) {
+      console.log("Вы авторизованы!");
+      // setTimeout(goUrl(), 5000);
+    } else {
+      console.log("Не верный логин или пароль");
+    }
+  });
 };
 app();
 
 /*{
   Для проверки:
-    email: johndoe@mail.ru
-    password: password 
+    email: emma658@mail.ru
+    password: pDhIu0IUdb 
 */
