@@ -18,7 +18,9 @@ const app = () => {
   const errorEmail = alerts[0];
   const errorPassword = alerts[1];
   const errorCheckbox = alerts[2];
-
+  //для проверки формы
+  userEmail.value = "emma658@mail.ru";
+  userPassword.value = "pDhIu0IUdb";
   const checkbox = formReg.querySelector(".checkbox");
   const checkboxMark = formReg.querySelector(".checkbox__mark");
 
@@ -61,8 +63,8 @@ const app = () => {
       addClass(userPassword, "border_red", labelPassword, "invalid");
       addMessage("Пароль должен содержать как минимум 8 символов", errorPassword);
     } else {
-      userData.password = userPassword.value;
       addMessage("", errorPassword);
+      userData.password = userPassword.value;
     }
 
     //валидация checkbox
@@ -73,15 +75,13 @@ const app = () => {
     } else {
       addMessage("", errorCheckbox);
     }
+    inputs.forEach((item, i) => {
+      item.addEventListener("input", () => {
+        removeClass(item, "border_red", labels[i], "invalid");
+        addMessage("", alert[i]);
+      });
+    });
 
-    userEmail.addEventListener("input", () => {
-      removeClass(userEmail, "border_red", labelEmail, "invalid");
-      addMessage("", errorEmail);
-    });
-    userPassword.addEventListener("input", () => {
-      removeClass(userPassword, "border_red", labelPassword, "invalid");
-      addMessage("", errorPassword);
-    });
     checkboxMark.addEventListener("change", () => {
       removeClass(checkbox, "invalid", checkboxMark, "border_red");
       addMessage("", errorCheckbox);
@@ -96,29 +96,56 @@ const app = () => {
       inputForm.style.display = "block";
       loginDetails[0].value = userData.email;
       loginDetails[1].value = userData.password;
+      localStorage.setItem("email", userData.email);
+      localStorage.setItem("password", userData.password);
       return userData;
     }
   });
 
   //работа с формой входа
-  const goUrl = function () {
-    document.location.href = "https://yandex.ru/";
-  };
+
   const inputForm = document.querySelector("#input-form");
   const btnInput = inputForm.querySelector(".registration-form__btn");
   const loginDetails = inputForm.querySelectorAll(".registration-form__input");
-  // const loginAndPassword = Array.from(loginDetails);
-  // console.log(loginAndPassword);
+  const checkApprovalMark = inputForm.querySelector(".checkbox__mark");
+  const alertsErrors = inputForm.querySelectorAll(".registration-form__alert");
+  const labelsInp = inputForm.querySelectorAll(".registration-form__label");
+
   //форма входа
   btnInput.addEventListener("click", (e) => {
     e.preventDefault();
-    if (loginDetails[0].value === userData.email && loginDetails[1].value === userData.password) {
+
+    localStorage.setItem("approval", checkApprovalMark.checked);
+    loginDetails.forEach((item, i) => {
+      item.addEventListener("input", () => {
+        removeClass(loginDetails[i], "border_red", labelsInp[i], "invalid");
+      });
+    });
+
+    if (
+      localStorage.getItem("email") === loginDetails[0].value &&
+      localStorage.getItem("password") === loginDetails[1].value
+    ) {
       console.log("Вы авторизованы!");
-      // setTimeout(goUrl(), 5000);
+      loginDetails.forEach((item) => (item.value = ""));
+      console.log(localStorage);
+      addMessage("Вы авторизованы", alertsErrors[3]);
+      // alertsErrors[3].style.cssText = "color:blue";
+      checkApprovalMark.checked = false;
     } else {
-      console.log("Не верный логин или пароль");
+      console.log("Неверный логин или пароль");
+      loginDetails.forEach((item, i) => addClass(loginDetails[i], "border_red", labelsInp[i], "invalid"));
+      addMessage("Неверный логин или пароль", alertsErrors[3]);
     }
   });
+
+  if (localStorage.length === 0) {
+    formReg.style.display = "block";
+    inputForm.style.display = "none";
+  } else {
+    formReg.style.display = "none";
+    inputForm.style.display = "block";
+  }
 };
 app();
 
@@ -126,4 +153,5 @@ app();
   Для проверки:
     email: emma658@mail.ru
     password: pDhIu0IUdb 
+
 */
