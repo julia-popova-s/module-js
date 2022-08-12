@@ -1,6 +1,9 @@
 .input-form {
-  display: none;
-  padding: 26px 45px 0 45px;
+  padding: 26px 45px;
+
+  &__label {
+    padding-left: 8px;
+  }
 
   &__input {
     width: 510px;

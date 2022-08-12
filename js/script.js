@@ -5,6 +5,7 @@ const app = () => {
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return reg.test(String(email).toLowerCase());
   }
+  const sectionReg = document.querySelector(".registration");
   const formReg = document.querySelector("#reg-form");
   const inputs = formReg.querySelectorAll(".registration-form__input");
   const labels = formReg.querySelectorAll(".registration-form__label");
@@ -43,6 +44,24 @@ const app = () => {
     e.preventDefault();
 
     //валидация email
+    // const checkValidationInputs = (element, validityCondition, message) => {
+    //   if (element.value === "") {
+    //     addClass(element, "border_red", labelEmail, "invalid");
+    //     addMessage("Поле обязательно для заполнения", errorEmail);
+    //   } else if (validityCondition) {
+    //     addClass(element, "border_red", labelEmail, "invalid");
+    //     addMessage(message, errorEmail);
+    //   } else {
+    //     addMessage("", errorEmail);
+    //     userData.email = element.value;
+    //   }
+    // };
+    // checkValidationInputs(userEmail, !validateEmail(userEmail.value), "Email невалидный");
+    // checkValidationInputs(
+    //   userPassword,
+    //   userPassword.value.length < 8,
+    //   "Пароль должен содержать как минимум 8 символов"
+    // );
 
     if (userEmail.value === "") {
       addClass(userEmail, "border_red", labelEmail, "invalid");
@@ -78,7 +97,7 @@ const app = () => {
     inputs.forEach((item, i) => {
       item.addEventListener("input", () => {
         removeClass(item, "border_red", labels[i], "invalid");
-        addMessage("", alert[i]);
+        addMessage("", alerts[i]);
       });
     });
 
@@ -92,8 +111,10 @@ const app = () => {
       console.log(userData);
       inputs.forEach((item) => (item.value = ""));
       checkboxMark.checked = false;
-      formReg.style.display = "none";
-      inputForm.style.display = "block";
+      sectionReg.classList.add("visibility-hidden");
+      sectionReg.classList.remove("visibility");
+      sectionLogin.classList.add("visibility");
+      sectionLogin.classList.remove("visibility-hidden");
       loginDetails[0].value = userData.email;
       loginDetails[1].value = userData.password;
       localStorage.setItem("email", userData.email);
@@ -103,22 +124,38 @@ const app = () => {
   });
 
   //работа с формой входа
+  const sectionLogin = document.querySelector(".login");
+  const loginForm = document.querySelector("#login-form");
+  const btnInput = loginForm.querySelector(".registration-form__btn");
+  const loginDetails = loginForm.querySelectorAll(".registration-form__input");
+  const checkApprovalMark = loginForm.querySelector(".checkbox__mark");
+  const alertsErrors = loginForm.querySelectorAll(".registration-form__alert");
+  const labelsInp = loginForm.querySelectorAll(".registration-form__label");
 
-  const inputForm = document.querySelector("#input-form");
-  const btnInput = inputForm.querySelector(".registration-form__btn");
-  const loginDetails = inputForm.querySelectorAll(".registration-form__input");
-  const checkApprovalMark = inputForm.querySelector(".checkbox__mark");
-  const alertsErrors = inputForm.querySelectorAll(".registration-form__alert");
-  const labelsInp = inputForm.querySelectorAll(".registration-form__label");
+  if (localStorage.length === 0) {
+    sectionReg.classList.add("visibility");
+    sectionLogin.classList.add("visibility-hidden");
+  } else {
+    sectionLogin.classList.add("visibility");
+    sectionReg.classList.add("visibility-hidden");
+  }
 
   //форма входа
   btnInput.addEventListener("click", (e) => {
     e.preventDefault();
 
+    // if (localStorage.length === 0) {
+    //   formReg.classList.add("visibility");
+    //   loginForm.classList.add("visibility-hidden");
+    // } else {
+    //   formReg.classList.add("visibility-hidden");
+    //   loginForm.classList.add("visibility");
+    // }
+
     localStorage.setItem("approval", checkApprovalMark.checked);
     loginDetails.forEach((item, i) => {
       item.addEventListener("input", () => {
-        removeClass(loginDetails[i], "border_red", labelsInp[i], "invalid");
+        removeClass(item, "border_red", labelsInp[i], "invalid");
       });
     });
 
@@ -129,23 +166,18 @@ const app = () => {
       console.log("Вы авторизованы!");
       loginDetails.forEach((item) => (item.value = ""));
       console.log(localStorage);
-      addMessage("Вы авторизованы", alertsErrors[3]);
-      // alertsErrors[3].style.cssText = "color:blue";
+      addMessage("Вы авторизованы!", alertsErrors[3]);
+      alertsErrors[3].classList.add("valid");
       checkApprovalMark.checked = false;
     } else {
       console.log("Неверный логин или пароль");
-      loginDetails.forEach((item, i) => addClass(loginDetails[i], "border_red", labelsInp[i], "invalid"));
+      alertsErrors[3].classList.remove("valid");
+      loginDetails.forEach((item, i) => addClass(item, "border_red", labelsInp[i], "invalid"));
       addMessage("Неверный логин или пароль", alertsErrors[3]);
     }
   });
 
-  if (localStorage.length === 0) {
-    formReg.style.display = "block";
-    inputForm.style.display = "none";
-  } else {
-    formReg.style.display = "none";
-    inputForm.style.display = "block";
-  }
+  localStorage.clear();
 };
 app();
 

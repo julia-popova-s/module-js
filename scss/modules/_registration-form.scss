@@ -5,7 +5,10 @@
   width: 600px;
   height: 412px;
   margin: 82px auto;
-  padding: 30px 40px 0 32px;
+  padding: 30px 44px 26px 34px;
+  display: flex;
+  flex-direction: column;
+
 
   &__title {
     text-align: center;
@@ -16,11 +19,20 @@
 
   &__label {
     margin-bottom: 3px;
-    padding-left: 20px;
+    padding-left: 19px;
     @include fontSetContent(700, 16px, 16px, #787878);
     position: relative;
   }
 
+  &__item {
+    display: flex;
+    align-items: flex-start;
+
+    svg {
+      margin-top: 7px;
+      margin-right: 3px;
+    }
+  }
 
   &__input {
     width: 509px;
@@ -48,13 +60,28 @@
     color: #CB2424;
   }
 
-  svg {
-    margin-bottom: 13px;
+  .valid {
+    color: #1A226B;
+    font-size: 15px;
   }
 
-  &__label[class~="invalid"]+svg path {
+  .visibility {
+    visibility: visible;
+  }
+
+  .visibility-hidden {
+    visibility: hidden;
+  }
+
+  &__star {
+    margin-bottom: 10px;
+  }
+
+  &__label[class~="invalid"]+&__item>svg path {
     fill: #CB2424;
   }
+
+
 
   &__check[class~="invalid"]>svg path {
     fill: #CB2424;
@@ -66,18 +93,35 @@
 
   &__alert {
     @include fontSetContent(500, 10px, 16px, #CB2424);
-    margin-bottom: 13px;
+    margin-bottom: 11px;
     padding-left: 13px;
+
+    &__mrg {
+      margin-bottom: 16px;
+    }
   }
 
 
   &__btn {
-    display: block;
-    margin: 0 auto;
+    margin-top: auto;
+    align-self: center;
+
     width: 180px;
     height: 52px;
     background-color: #1A226B;
     border-radius: 10px;
     @include fontSetContent(700, 24px, 16px, #FFFFFF);
+
+    &:hover {
+      box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
+    }
   }
+}
+
+.visibility {
+  display: block;
+}
+
+.visibility-hidden {
+  display: none;
 }

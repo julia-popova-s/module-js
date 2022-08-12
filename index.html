@@ -20,40 +20,50 @@
         <form class="registration-form" id="reg-form">
           <h1 class="registration-form__title">Регистрация</h1>
           <label class="registration-form__label">Email</label>
-          <svg
-            class="registration-form__star"
-            width="9"
-            height="8"
-            viewBox="0 0 9 8"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M2.99707 4.54492L0.237305 3.7627L0.755859 2.17188L3.48926 3.27051L3.31348 0.203125H5.03613L4.86035 3.33203L7.52344 2.25098L8.04199 3.85938L5.22949 4.6416L7.0752 6.97949L5.67773 7.97266L4.07812 5.40625L2.49609 7.88477L1.09863 6.93555L2.99707 4.54492Z"
-              fill="#787878"
-            />
-          </svg>
+          <div class="registration-form__item">
+            <svg
+              class="registration-form__star"
+              width="9"
+              height="8"
+              viewBox="0 0 9 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.99707 4.54492L0.237305 3.7627L0.755859 2.17188L3.48926 3.27051L3.31348 0.203125H5.03613L4.86035 3.33203L7.52344 2.25098L8.04199 3.85938L5.22949 4.6416L7.0752 6.97949L5.67773 7.97266L4.07812 5.40625L2.49609 7.88477L1.09863 6.93555L2.99707 4.54492Z"
+                fill="#787878"
+              />
+            </svg>
 
-          <input class="registration-form__input" type="text" placeholder="Введите email" />
+            <input class="registration-form__input" type="text" placeholder="Введите email" autocomplete="username" />
+          </div>
           <p class="registration-form__alert"></p>
 
           <label class="registration-form__label">Пароль</label>
-          <svg
-            class="registration-form__star"
-            width="9"
-            height="8"
-            viewBox="0 0 9 8"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M2.99707 4.54492L0.237305 3.7627L0.755859 2.17188L3.48926 3.27051L3.31348 0.203125H5.03613L4.86035 3.33203L7.52344 2.25098L8.04199 3.85938L5.22949 4.6416L7.0752 6.97949L5.67773 7.97266L4.07812 5.40625L2.49609 7.88477L1.09863 6.93555L2.99707 4.54492Z"
-              fill="#787878"
-            />
-          </svg>
+          <div class="registration-form__item">
+            <svg
+              class="registration-form__star"
+              width="9"
+              height="8"
+              viewBox="0 0 9 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.99707 4.54492L0.237305 3.7627L0.755859 2.17188L3.48926 3.27051L3.31348 0.203125H5.03613L4.86035 3.33203L7.52344 2.25098L8.04199 3.85938L5.22949 4.6416L7.0752 6.97949L5.67773 7.97266L4.07812 5.40625L2.49609 7.88477L1.09863 6.93555L2.99707 4.54492Z"
+                fill="#787878"
+              />
+            </svg>
 
-          <input class="registration-form__input" placeholder="Введите пароль" type="password" />
-          <p class="registration-form__alert"></p>
+            <input
+              class="registration-form__input"
+              placeholder="Введите пароль"
+              type="password"
+              name="password"
+              autocomplete="current-password"
+            />
+          </div>
+          <p class="registration-form__alert registration-form__alert_mrg"></p>
 
           <div class="checkbox registration-form__check">
             <svg
@@ -71,6 +81,7 @@
             </svg>
 
             <input type="checkbox" class="checkbox__mark" id="checkbox-reg" name="rules" />
+
             <label class="checkbox__label" for="checkbox-reg">
               Я согласен с <a class="checkbox__link" href="#">Правилами пользования приложением</a>
             </label>
@@ -79,13 +90,14 @@
 
           <button class="registration-form__btn" type="submit" form="reg-form">Регистрация</button>
         </form>
-
-        <form class="registration-form input-form" id="input-form">
+      </section>
+      <section class="login">
+        <form class="registration-form input-form" id="login-form">
           <div class="registration-form__title">Вход</div>
-          <label class="registration-form__label">Email</label>
+          <label class="registration-form__label input-form__label">Email</label>
           <input class="registration-form__input input-form__input" type="text" placeholder="Введите email" required />
           <p class="registration-form__alert"></p>
-          <label class="registration-form__label">Пароль</label>
+          <label class="registration-form__label input-form__label">Пароль</label>
           <input class="registration-form__input" placeholder="Введите пароль" type="password" />
           <p class="registration-form__alert"></p>
           <div class="checkbox registration-form__check">

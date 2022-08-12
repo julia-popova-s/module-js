@@ -459,6 +459,8 @@ textarea {
 .checkbox {
   display: flex;
   gap: 10px;
+  align-items: center;
+  height: 24px;
 }
 .checkbox__mark {
   opacity: 0;
@@ -489,7 +491,7 @@ textarea {
 }
 .checkbox__label::after {
   content: url("../img/vector.svg");
-  left: -27px;
+  left: -25px;
   top: 0px;
 }
 .checkbox__link {
@@ -534,7 +536,9 @@ body {
   width: 600px;
   height: 412px;
   margin: 82px auto;
-  padding: 30px 40px 0 32px;
+  padding: 30px 44px 26px 34px;
+  display: flex;
+  flex-direction: column;
 }
 .registration-form__title {
   text-align: center;
@@ -546,12 +550,20 @@ body {
 }
 .registration-form__label {
   margin-bottom: 3px;
-  padding-left: 20px;
+  padding-left: 19px;
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
   color: #787878;
   position: relative;
+}
+.registration-form__item {
+  display: flex;
+  align-items: flex-start;
+}
+.registration-form__item svg {
+  margin-top: 7px;
+  margin-right: 3px;
 }
 .registration-form__input {
   width: 509px;
@@ -591,10 +603,20 @@ body {
 .registration-form .invalid {
   color: #CB2424;
 }
-.registration-form svg {
-  margin-bottom: 13px;
+.registration-form .valid {
+  color: #1A226B;
+  font-size: 15px;
 }
-.registration-form__label[class~=invalid] + svg path {
+.registration-form .visibility {
+  visibility: visible;
+}
+.registration-form .visibility-hidden {
+  visibility: hidden;
+}
+.registration-form__star {
+  margin-bottom: 10px;
+}
+.registration-form__label[class~=invalid] + .registration-form__item > svg path {
   fill: #CB2424;
 }
 .registration-form__check[class~=invalid] > svg path {
@@ -608,12 +630,15 @@ body {
   font-size: 10px;
   line-height: 16px;
   color: #CB2424;
-  margin-bottom: 13px;
+  margin-bottom: 11px;
   padding-left: 13px;
 }
+.registration-form__alert__mrg {
+  margin-bottom: 16px;
+}
 .registration-form__btn {
-  display: block;
-  margin: 0 auto;
+  margin-top: auto;
+  align-self: center;
   width: 180px;
   height: 52px;
   background-color: #1A226B;
@@ -623,10 +648,23 @@ body {
   line-height: 16px;
   color: #FFFFFF;
 }
+.registration-form__btn:hover {
+  box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
+}
+
+.visibility {
+  display: block;
+}
+
+.visibility-hidden {
+  display: none;
+}
 
 .input-form {
-  display: none;
-  padding: 26px 45px 0 45px;
+  padding: 26px 45px;
+}
+.input-form__label {
+  padding-left: 8px;
 }
 .input-form__input {
   width: 510px;
