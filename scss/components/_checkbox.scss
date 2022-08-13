@@ -2,14 +2,14 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  height: 24px;
+
 
   &__mark {
     opacity: 0;
   }
 
   &__label {
-    @include fontSetContent(400, 14px, 16px, #787878);
+    @include fontSetContent(400, 14px, 16px, $color-text);
     text-align: left;
     position: relative;
     padding-left: 5px;
@@ -26,10 +26,10 @@
       width: 24px;
       box-sizing: border-box;
 
-      top: -5px;
+      top: -4px;
       left: -29px;
-      background-color: #FFFFFF;
-      border: 2px solid #787878;
+      background-color: $white;
+      border: 2px solid $color-text;
       border-radius: 7px;
     }
 
@@ -41,7 +41,7 @@
   }
 
   &__link {
-    color: #787878;
+    color: $color-text;
     text-decoration: underline;
   }
 }

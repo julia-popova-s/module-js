@@ -8,7 +8,7 @@ html {
 
 body {
   @include fontSetContent(400, 16px, 19px, $black);
-  background-color: $color-bg;
+  background-color: $color-back;
 }
 
 .container {

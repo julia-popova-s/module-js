@@ -18,7 +18,7 @@
     <section class="registration">
       <div class="container">
         <form class="registration-form" id="reg-form">
-          <h1 class="registration-form__title">Регистрация</h1>
+          <div class="registration-form__title">Регистрация</div>
           <label class="registration-form__label">Email</label>
           <div class="registration-form__item">
             <svg
@@ -35,7 +35,7 @@
               />
             </svg>
 
-            <input class="registration-form__input" type="text" placeholder="Введите email" autocomplete="username" />
+            <input class="registration-form__input" type="email" name="email" autocomplete="on" placeholder="Введите email"  />
           </div>
           <p class="registration-form__alert"></p>
 
@@ -60,7 +60,7 @@
               placeholder="Введите пароль"
               type="password"
               name="password"
-              autocomplete="current-password"
+              autocomplete="new-password"
             />
           </div>
           <p class="registration-form__alert registration-form__alert_mrg"></p>
@@ -95,10 +95,10 @@
         <form class="registration-form input-form" id="login-form">
           <div class="registration-form__title">Вход</div>
           <label class="registration-form__label input-form__label">Email</label>
-          <input class="registration-form__input input-form__input" type="text" placeholder="Введите email" required />
+          <input class="registration-form__input input-form__input" type="email" autocomplete="on" placeholder="Введите email" required />
           <p class="registration-form__alert"></p>
           <label class="registration-form__label input-form__label">Пароль</label>
-          <input class="registration-form__input" placeholder="Введите пароль" type="password" />
+          <input class="registration-form__input" placeholder="Введите пароль" type="password" autocomplete="current-password" />
           <p class="registration-form__alert"></p>
           <div class="checkbox registration-form__check">
             <input type="checkbox" class="checkbox__mark" id="checkbox-input" name="rules" />

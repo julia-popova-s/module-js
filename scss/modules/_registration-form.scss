@@ -1,5 +1,5 @@
 .registration-form {
-  background-color: #FFFFFF;
+  background-color: $white;
   box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   width: 600px;
@@ -8,19 +8,19 @@
   padding: 30px 44px 26px 34px;
   display: flex;
   flex-direction: column;
-
+  transition: 0.4s;
 
   &__title {
     text-align: center;
 
-    @include fontSetContent(700, 50px, 50px, #787878);
+    @include fontSetContent(700, 50px, 50px, $color-text);
     margin-bottom: 13px;
   }
 
   &__label {
     margin-bottom: 3px;
     padding-left: 19px;
-    @include fontSetContent(700, 16px, 16px, #787878);
+    @include fontSetContent(700, 16px, 16px, $color-text);
     position: relative;
   }
 
@@ -37,40 +37,24 @@
   &__input {
     width: 509px;
     height: 49px;
-    background: #FFFFFF;
-    border: 2px solid #787878;
+    background: $white;
+    border: 2px solid $color-text;
     border-radius: 10px;
     box-sizing: border-box;
     padding-top: 7px;
     padding-left: 15px;
-    @include fontSetContent(700, 28px, 36px, #787878);
+    @include fontSetContent(700, 28px, 36px, $color-text);
+    transition: border 0.5s ease;
+
+    &:focus {
+      border: 2px solid #323131;
+      transition: border 0.5s ease;
+    }
 
 
     &::placeholder {
-
-      @include fontSetContent(700, 28px, 36px, #CCCCCC);
+      @include fontSetContent(700, 28px, 36px, $color-placeholder);
     }
-  }
-
-  .border_red {
-    border: 2px solid #CB2424;
-  }
-
-  .invalid {
-    color: #CB2424;
-  }
-
-  .valid {
-    color: #1A226B;
-    font-size: 15px;
-  }
-
-  .visibility {
-    visibility: visible;
-  }
-
-  .visibility-hidden {
-    visibility: hidden;
   }
 
   &__star {
@@ -78,27 +62,21 @@
   }
 
   &__label[class~="invalid"]+&__item>svg path {
-    fill: #CB2424;
+    fill: $color-errors;
   }
 
-
-
   &__check[class~="invalid"]>svg path {
-    fill: #CB2424;
+    fill: $color-errors;
   }
 
   .checkbox__mark[class~="border_red"]+.checkbox__label::before {
-    border: 2px solid #CB2424;
+    border: 2px solid $color-errors;
   }
 
   &__alert {
-    @include fontSetContent(500, 10px, 16px, #CB2424);
-    margin-bottom: 11px;
+    @include fontSetContent(500, 10px, 16px, $color-errors);
+    margin-bottom: 13px;
     padding-left: 13px;
-
-    &__mrg {
-      margin-bottom: 16px;
-    }
   }
 
 
@@ -108,20 +86,36 @@
 
     width: 180px;
     height: 52px;
-    background-color: #1A226B;
+    background-color: $color-btn;
     border-radius: 10px;
-    @include fontSetContent(700, 24px, 16px, #FFFFFF);
+    @include fontSetContent(700, 24px, 16px, $white);
+    transition: all 0.3s ease;
 
     &:hover {
-      box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
+      background-color: #0c1457;
+      box-shadow: 0px 0px 20px 10px rgba(56, 30, 159, 0.25);
+      transition: all 0.3s ease;
     }
   }
 }
 
-.visibility {
+.registration-form__btn .border_red {
+  border: 2px solid $color-errors;
+}
+
+.color_red {
+  color: $color-errors;
+}
+
+.valid {
+  color: $color-btn;
+  font-size: 15px;
+}
+
+.visible {
   display: block;
 }
 
-.visibility-hidden {
+.hidden {
   display: none;
 }
