@@ -7,10 +7,10 @@ const app = () => {
   };
   const sectionReg = document.querySelector(".registration");
   const formReg = sectionReg.querySelector("#reg-form");
-  const inputs = formReg.querySelectorAll(".registration-form__input");
-  const labels = formReg.querySelectorAll(".registration-form__label");
-  const buttonReg = formReg.querySelector(".registration-form__btn");
-  const alerts = formReg.querySelectorAll(".registration-form__alert");
+  const inputs = formReg.querySelectorAll(".login-form__input");
+  const labels = formReg.querySelectorAll(".login-form__label");
+  const buttonReg = formReg.querySelector(".login-form__btn");
+  const alerts = formReg.querySelectorAll(".login-form__alert");
 
   const checkbox = formReg.querySelector(".checkbox");
   const checkboxMark = formReg.querySelector(".checkbox__mark");
@@ -25,12 +25,12 @@ const app = () => {
 
   //форма входа
   const sectionLogin = document.querySelector(".login");
-  const loginForm = sectionLogin.querySelector("#login-form");
-  const btnInput = loginForm.querySelector(".registration-form__btn");
-  const loginDetails = loginForm.querySelectorAll(".registration-form__input");
+  const loginForm = sectionLogin.querySelector("#login-id");
+  const btnInput = loginForm.querySelector(".login-form__btn");
+  const loginDetails = loginForm.querySelectorAll(".login-form__input");
   const checkApprovalMark = loginForm.querySelector(".checkbox__mark");
-  const alertsErrors = loginForm.querySelectorAll(".registration-form__alert");
-  const labelsInp = loginForm.querySelectorAll(".registration-form__label");
+  const alertsErrors = loginForm.querySelectorAll(".login-form__alert");
+  const labelsInp = loginForm.querySelectorAll(".login-form__label");
 
   const addClass = (input, class_input, label, class_label) => {
     input.classList.add(class_input);

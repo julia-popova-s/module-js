@@ -491,7 +491,7 @@ textarea {
 .checkbox__label::after {
   content: url("../img/vector.svg");
   left: -25px;
-  top: 0px;
+  top: 1px;
 }
 .checkbox__link {
   color: #787878;
@@ -528,7 +528,7 @@ body {
   padding: 0 20px;
 }
 
-.registration-form {
+.login-form {
   background-color: #FEFEFE;
   box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
@@ -540,7 +540,7 @@ body {
   flex-direction: column;
   transition: 0.4s;
 }
-.registration-form__title {
+.login-form__title {
   text-align: center;
   font-weight: 700;
   font-size: 50px;
@@ -548,7 +548,7 @@ body {
   color: #787878;
   margin-bottom: 13px;
 }
-.registration-form__label {
+.login-form__label {
   margin-bottom: 3px;
   padding-left: 19px;
   font-weight: 700;
@@ -557,15 +557,15 @@ body {
   color: #787878;
   position: relative;
 }
-.registration-form__item {
+.login-form__item {
   display: flex;
   align-items: flex-start;
 }
-.registration-form__item svg {
+.login-form__item svg {
   margin-top: 7px;
   margin-right: 3px;
 }
-.registration-form__input {
+.login-form__input {
   width: 509px;
   height: 49px;
   background: #FEFEFE;
@@ -580,41 +580,41 @@ body {
   color: #787878;
   transition: border 0.5s ease;
 }
-.registration-form__input:focus {
+.login-form__input:focus {
   border: 2px solid #323131;
   transition: border 0.5s ease;
 }
-.registration-form__input::-moz-placeholder {
+.login-form__input::-moz-placeholder {
   font-weight: 700;
   font-size: 28px;
   line-height: 36px;
   color: #CCCCCC;
 }
-.registration-form__input:-ms-input-placeholder {
+.login-form__input:-ms-input-placeholder {
   font-weight: 700;
   font-size: 28px;
   line-height: 36px;
   color: #CCCCCC;
 }
-.registration-form__input::placeholder {
+.login-form__input::placeholder {
   font-weight: 700;
   font-size: 28px;
   line-height: 36px;
   color: #CCCCCC;
 }
-.registration-form__star {
+.login-form__star {
   margin-bottom: 10px;
 }
-.registration-form__label[class~=invalid] + .registration-form__item > svg path {
+.login-form__label[class~=invalid] + .login-form__item > svg path {
   fill: #CB2424;
 }
-.registration-form__check[class~=invalid] > svg path {
+.login-form__check[class~=invalid] > svg path {
   fill: #CB2424;
 }
-.registration-form .checkbox__mark[class~=border_red] + .checkbox__label::before {
+.login-form .checkbox__mark[class~=border_red] + .checkbox__label::before {
   border: 2px solid #CB2424;
 }
-.registration-form__alert {
+.login-form__alert {
   font-weight: 500;
   font-size: 10px;
   line-height: 16px;
@@ -622,7 +622,7 @@ body {
   margin-bottom: 13px;
   padding-left: 13px;
 }
-.registration-form__btn {
+.login-form__btn {
   margin-top: auto;
   align-self: center;
   width: 180px;
@@ -635,13 +635,13 @@ body {
   color: #FEFEFE;
   transition: all 0.3s ease;
 }
-.registration-form__btn:hover {
+.login-form__btn:hover {
   background-color: #0c1457;
   box-shadow: 0px 0px 20px 10px rgba(56, 30, 159, 0.25);
   transition: all 0.3s ease;
 }
 
-.registration-form__btn .border_red {
+.border_red {
   border: 2px solid #CB2424;
 }
 

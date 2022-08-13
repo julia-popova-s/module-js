@@ -11,18 +11,18 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/style.css" />
-    <title>Registration</title>
+    <title>Registration - Log in</title>
   </head>
 
   <body>
     <section class="registration">
       <div class="container">
-        <form class="registration-form" id="reg-form">
-          <div class="registration-form__title">Регистрация</div>
-          <label class="registration-form__label">Email</label>
-          <div class="registration-form__item">
+        <form class="login-form" id="reg-form">
+          <div class="login-form__title">Регистрация</div>
+          <label class="login-form__label">Email</label>
+          <div class="login-form__item">
             <svg
-              class="registration-form__star"
+              class="login-form__star"
               width="9"
               height="8"
               viewBox="0 0 9 8"
@@ -35,14 +35,14 @@
               />
             </svg>
 
-            <input class="registration-form__input" type="email" name="email" autocomplete="on" placeholder="Введите email"  />
+            <input class="login-form__input" type="email" name="email" autocomplete="on" placeholder="Введите email"  />
           </div>
-          <p class="registration-form__alert"></p>
+          <p class="login-form__alert"></p>
 
-          <label class="registration-form__label">Пароль</label>
-          <div class="registration-form__item">
+          <label class="login-form__label">Пароль</label>
+          <div class="login-form__item">
             <svg
-              class="registration-form__star"
+              class="login-form__star"
               width="9"
               height="8"
               viewBox="0 0 9 8"
@@ -56,18 +56,18 @@
             </svg>
 
             <input
-              class="registration-form__input"
+              class="login-form__input"
               placeholder="Введите пароль"
               type="password"
               name="password"
               autocomplete="new-password"
             />
           </div>
-          <p class="registration-form__alert registration-form__alert_mrg"></p>
+          <p class="login-form__alert login-form__alert_mrg"></p>
 
-          <div class="checkbox registration-form__check">
+          <div class="checkbox login-form__check">
             <svg
-              class="registration-form__star"
+              class="login-form__star"
               width="9"
               height="8"
               viewBox="0 0 9 8"
@@ -86,30 +86,30 @@
               Я согласен с <a class="checkbox__link" href="#">Правилами пользования приложением</a>
             </label>
           </div>
-          <p class="registration-form__alert"></p>
+          <p class="login-form__alert"></p>
 
-          <button class="registration-form__btn" type="submit" form="reg-form">Регистрация</button>
+          <button class="login-form__btn" type="submit" form="reg-form">Регистрация</button>
         </form>
       </section>
       <section class="login">
-        <form class="registration-form input-form" id="login-form">
-          <div class="registration-form__title">Вход</div>
-          <label class="registration-form__label input-form__label">Email</label>
-          <input class="registration-form__input input-form__input" type="email" autocomplete="on" placeholder="Введите email" required />
-          <p class="registration-form__alert"></p>
-          <label class="registration-form__label input-form__label">Пароль</label>
-          <input class="registration-form__input" placeholder="Введите пароль" type="password" autocomplete="current-password" />
-          <p class="registration-form__alert"></p>
-          <div class="checkbox registration-form__check">
+        <form class="login-form input-form" id="login-id">
+          <div class="login-form__title">Вход</div>
+          <label class="login-form__label input-form__label">Email</label>
+          <input class="login-form__input input-form__input" type="email" autocomplete="on" placeholder="Введите email" required />
+          <p class="login-form__alert"></p>
+          <label class="login-form__label input-form__label">Пароль</label>
+          <input class="login-form__input" placeholder="Введите пароль" type="password" autocomplete="current-password" />
+          <p class="login-form__alert"></p>
+          <div class="checkbox login-form__check">
             <input type="checkbox" class="checkbox__mark" id="checkbox-input" name="rules" />
             <label class="checkbox__label input-form__check-label" for="checkbox-input">
               Я согласен получать обновления на почту
             </label>
           </div>
-          <p class="registration-form__alert"></p>
-          <p class="registration-form__alert"></p>
+          <p class="login-form__alert"></p>
+          <p class="login-form__alert"></p>
 
-          <button class="registration-form__btn" type="submit" form="input-form">Войти</button>
+          <button class="login-form__btn" type="submit" form="login-id">Войти</button>
         </form>
       </div>
     </section>

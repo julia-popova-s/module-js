@@ -1,4 +1,4 @@
-.registration-form {
+.login-form {
   background-color: $white;
   box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
@@ -99,7 +99,7 @@
   }
 }
 
-.registration-form__btn .border_red {
+.border_red {
   border: 2px solid $color-errors;
 }
 
