@@ -7,17 +7,23 @@
 
   &__input {
     width: 510px;
+    margin-bottom: 16px;
   }
 
-  &__check-label {
-    padding-left: 10px;
+  &__check {
+    margin-bottom: 13px;
 
-    &::after {
-      left: -19px;
-    }
+    &-label {
+      padding-left: 10px;
 
-    &::before {
-      left: -23px;
+      &::after {
+        left: -19px;
+      }
+
+      &::before {
+        left: -23px;
+      }
     }
   }
+
 }

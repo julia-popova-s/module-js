@@ -14,14 +14,13 @@ const app = () => {
 
   const checkbox = formReg.querySelector(".checkbox");
   const checkboxMark = formReg.querySelector(".checkbox__mark");
-  const errorCheckbox = alerts[2];
+  const alertCheckbox = alerts[2];
   const userEmail = inputs[0];
   const userPassword = inputs[1];
 
   // //для проверки формы
   userEmail.value = "emma658@mail.ru";
   userPassword.value = "pDhIu0IUdb";
-  const userData = {};
 
   //форма входа
   const sectionLogin = document.querySelector(".login");
@@ -29,8 +28,9 @@ const app = () => {
   const btnInput = loginForm.querySelector(".login-form__btn");
   const loginDetails = loginForm.querySelectorAll(".login-form__input");
   const checkApprovalMark = loginForm.querySelector(".checkbox__mark");
-  const alertsErrors = loginForm.querySelectorAll(".login-form__alert");
+  const alertError = loginForm.querySelector(".login-form__alert");
   const labelsInp = loginForm.querySelectorAll(".login-form__label");
+  const userData = {};
 
   const addClass = (input, class_input, label, class_label) => {
     input.classList.add(class_input);
@@ -44,6 +44,7 @@ const app = () => {
   const addMessage = (message, alert) => {
     alert.innerText = message;
   };
+
   //проверка сохранены ли данные в localStorage
   if (localStorage.length === 0) {
     sectionReg.classList.add("visible");
@@ -83,14 +84,14 @@ const app = () => {
 
     if (!checkboxMark.checked) {
       addClass(checkbox, "color_red", checkboxMark, "border_red");
-      addMessage("Поле обязательно для заполнения", errorCheckbox);
+      addMessage("Поле обязательно для заполнения", alertCheckbox);
     } else {
-      addMessage("", errorCheckbox);
+      addMessage("", alertCheckbox);
     }
 
     checkboxMark.addEventListener("change", () => {
       removeClass(checkbox, "color_red", checkboxMark, "border_red");
-      addMessage("", errorCheckbox);
+      addMessage("", alertCheckbox);
     });
 
     if (validateEmail(userEmail.value) && userPassword.value.length >= 8 && checkboxMark.checked) {
@@ -132,14 +133,14 @@ const app = () => {
       loginDetails.forEach((item) => (item.value = ""));
       loginDetails.forEach((item, i) => removeClass(item, "border_red", labelsInp[i], "color_red"));
       console.log(localStorage);
-      addMessage("Вы авторизованы!", alertsErrors[3]);
-      alertsErrors[3].classList.add("valid");
+      addMessage("Вы авторизованы!", alertError);
+      alertError.classList.add("valid");
       checkApprovalMark.checked = false;
     } else {
       console.log("Неверный логин или пароль");
-      alertsErrors[3].classList.remove("valid");
+      alertError.classList.remove("valid");
       loginDetails.forEach((item, i) => addClass(item, "border_red", labelsInp[i], "color_red"));
-      addMessage("Неверный логин или пароль", alertsErrors[3]);
+      addMessage("Неверный логин или пароль", alertError);
     }
   });
 
@@ -151,5 +152,4 @@ app();
   Для проверки:
     email: emma658@mail.ru
     password: pDhIu0IUdb 
-
 */

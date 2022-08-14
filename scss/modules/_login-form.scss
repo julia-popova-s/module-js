@@ -8,7 +8,7 @@
   padding: 30px 44px 26px 34px;
   display: flex;
   flex-direction: column;
-  transition: 0.4s;
+  transition: 0.3s;
 
   &__title {
     text-align: center;
@@ -44,11 +44,11 @@
     padding-top: 7px;
     padding-left: 15px;
     @include fontSetContent(700, 28px, 36px, $color-text);
-    transition: border 0.5s ease;
+    transition: border 0.3s ease;
 
     &:focus {
       border: 2px solid #323131;
-      transition: border 0.5s ease;
+      transition: border 0.3s ease;
     }
 
 
@@ -61,11 +61,11 @@
     margin-bottom: 10px;
   }
 
-  &__label[class~="invalid"]+&__item>svg path {
+  &__label[class~="color_red"]+&__item>svg path {
     fill: $color-errors;
   }
 
-  &__check[class~="invalid"]>svg path {
+  &__check[class~="color_red"]>svg path {
     fill: $color-errors;
   }
 
@@ -75,15 +75,17 @@
 
   &__alert {
     @include fontSetContent(500, 10px, 16px, $color-errors);
-    margin-bottom: 13px;
+    margin-bottom: 12px;
     padding-left: 13px;
-  }
 
+    &_padding {
+      padding-top: 3px;
+    }
+  }
 
   &__btn {
     margin-top: auto;
     align-self: center;
-
     width: 180px;
     height: 52px;
     background-color: $color-btn;

@@ -538,7 +538,7 @@ body {
   padding: 30px 44px 26px 34px;
   display: flex;
   flex-direction: column;
-  transition: 0.4s;
+  transition: 0.3s;
 }
 .login-form__title {
   text-align: center;
@@ -578,11 +578,11 @@ body {
   font-size: 28px;
   line-height: 36px;
   color: #787878;
-  transition: border 0.5s ease;
+  transition: border 0.3s ease;
 }
 .login-form__input:focus {
   border: 2px solid #323131;
-  transition: border 0.5s ease;
+  transition: border 0.3s ease;
 }
 .login-form__input::-moz-placeholder {
   font-weight: 700;
@@ -605,10 +605,10 @@ body {
 .login-form__star {
   margin-bottom: 10px;
 }
-.login-form__label[class~=invalid] + .login-form__item > svg path {
+.login-form__label[class~=color_red] + .login-form__item > svg path {
   fill: #CB2424;
 }
-.login-form__check[class~=invalid] > svg path {
+.login-form__check[class~=color_red] > svg path {
   fill: #CB2424;
 }
 .login-form .checkbox__mark[class~=border_red] + .checkbox__label::before {
@@ -619,8 +619,11 @@ body {
   font-size: 10px;
   line-height: 16px;
   color: #CB2424;
-  margin-bottom: 13px;
+  margin-bottom: 12px;
   padding-left: 13px;
+}
+.login-form__alert_padding {
+  padding-top: 3px;
 }
 .login-form__btn {
   margin-top: auto;
@@ -670,6 +673,10 @@ body {
 }
 .input-form__input {
   width: 510px;
+  margin-bottom: 16px;
+}
+.input-form__check {
+  margin-bottom: 13px;
 }
 .input-form__check-label {
   padding-left: 10px;
