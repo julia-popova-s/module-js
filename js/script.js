@@ -37,9 +37,8 @@ const app = () => {
     label.classList.add(class_label);
   };
 
-  const removeClass = (input, class_input, label, class_label) => {
-    input.classList.remove(class_input);
-    label.classList.remove(class_label);
+  const removeClass = (item, class_item) => {
+    item.classList.remove(class_item);
   };
   const addMessage = (message, alert) => {
     alert.innerText = message;
@@ -53,6 +52,24 @@ const app = () => {
     sectionLogin.classList.add("visible");
     sectionReg.classList.add("hidden");
   }
+  formReg.addEventListener("input", (e) => {
+    removeClass(e.target, "border_red");
+  });
+  inputs.forEach((item, i) => {
+    item.addEventListener("input", () => {
+      removeClass(labels[i], "color_red");
+      addMessage("", alerts[i]);
+    });
+  });
+
+  loginForm.addEventListener("input", (e) => {
+    removeClass(e.target, "border_red");
+  });
+  loginDetails.forEach((item, i) => {
+    item.addEventListener("input", () => {
+      removeClass(labelsInp[i], "color_red");
+    });
+  });
 
   //форма регистрации
   buttonReg.addEventListener("click", (e) => {
@@ -66,10 +83,6 @@ const app = () => {
       } else {
         addMessage("", alerts[i]);
       }
-      item.addEventListener("input", () => {
-        removeClass(item, "border_red", labels[i], "color_red");
-        addMessage("", alerts[i]);
-      });
     });
     if (!validateEmail(inputs[0].value) && inputs[0].value != "") {
       addClass(inputs[0], "border_red", labels[0], "color_red");
@@ -90,7 +103,8 @@ const app = () => {
     }
 
     checkboxMark.addEventListener("change", () => {
-      removeClass(checkbox, "color_red", checkboxMark, "border_red");
+      removeClass(checkbox, "color_red");
+      removeClass(checkboxMark, "border_red");
       addMessage("", alertCheckbox);
     });
 
@@ -99,7 +113,6 @@ const app = () => {
       userData.password = userPassword.value;
       loginDetails[0].value = userData.email;
       loginDetails[1].value = userData.password;
-
       localStorage.setItem("email", userData.email);
       localStorage.setItem("password", userData.password);
       console.log("Данные пользователя:");
@@ -113,18 +126,11 @@ const app = () => {
       return userData;
     }
   });
-
   //форма входа
+
   btnInput.addEventListener("click", (e) => {
     e.preventDefault();
-
     localStorage.setItem("approval", checkApprovalMark.checked);
-    loginDetails.forEach((item, i) => {
-      item.addEventListener("input", () => {
-        removeClass(item, "border_red", labelsInp[i], "color_red");
-      });
-    });
-
     if (
       localStorage.getItem("email") === loginDetails[0].value &&
       localStorage.getItem("password") === loginDetails[1].value
@@ -136,6 +142,10 @@ const app = () => {
       addMessage("Вы авторизованы!", alertError);
       alertError.classList.add("valid");
       checkApprovalMark.checked = false;
+    } else if (loginDetails[0].value === "" || loginDetails[1].value === "") {
+      alertError.classList.remove("valid");
+      loginDetails.forEach((item, i) => addClass(item, "border_red", labelsInp[i], "color_red"));
+      addMessage("Введите логин и пароль", alertError);
     } else {
       console.log("Неверный логин или пароль");
       alertError.classList.remove("valid");
