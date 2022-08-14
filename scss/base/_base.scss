@@ -8,11 +8,15 @@ html {
 
 body {
   @include fontSetContent(400, 16px, 19px, $black);
-  background-color: $color-back;
 }
 
 .container {
   margin: 0 auto;
   max-width: 1400px;
   padding: 0 20px;
+  height: 737px;
+
+  @media screen and (max-width:768px) {
+    padding-top: 20px;
+  }
 }

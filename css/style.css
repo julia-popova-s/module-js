@@ -519,26 +519,48 @@ body {
   font-size: 16px;
   line-height: 19px;
   color: #000000;
-  background-color: #1B2473;
 }
 
 .container {
   margin: 0 auto;
   max-width: 1400px;
   padding: 0 20px;
+  height: 737px;
+}
+@media screen and (max-width: 768px) {
+  .container {
+    padding-top: 20px;
+  }
+}
+
+.registration,
+.login {
+  background-color: #1B2473;
+  padding-top: 82px;
+}
+@media screen and (max-width: 768px) {
+  .registration,
+.login {
+    padding-top: 0;
+  }
 }
 
 .login-form {
   background-color: #FEFEFE;
   box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  width: 600px;
-  height: 412px;
-  margin: 82px auto;
+  max-width: 600px;
+  min-height: 412px;
+  margin: 0 auto;
   padding: 30px 44px 26px 34px;
   display: flex;
   flex-direction: column;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+}
+@media screen and (max-width: 768px) {
+  .login-form {
+    padding-top: 38px;
+  }
 }
 .login-form__title {
   text-align: center;
@@ -560,14 +582,15 @@ body {
 .login-form__item {
   display: flex;
   align-items: flex-start;
+  max-width: 100%;
 }
 .login-form__item svg {
   margin-top: 7px;
   margin-right: 3px;
 }
 .login-form__input {
-  width: 509px;
-  height: 49px;
+  width: 100%;
+  max-height: 49px;
   background: #FEFEFE;
   border: 2px solid #787878;
   border-radius: 10px;
@@ -622,7 +645,10 @@ body {
   margin-bottom: 12px;
   padding-left: 13px;
 }
-.login-form__alert_padding {
+.login-form__alert_mrg {
+  margin-bottom: 16px;
+}
+.login-form__alert_pdg {
   padding-top: 3px;
 }
 .login-form__btn {
@@ -668,11 +694,15 @@ body {
 .input-form {
   padding: 26px 45px;
 }
+@media screen and (max-width: 768px) {
+  .input-form {
+    padding: 38px 45px 0 45px;
+  }
+}
 .input-form__label {
   padding-left: 8px;
 }
 .input-form__input {
-  width: 510px;
   margin-bottom: 16px;
 }
 .input-form__check {
@@ -686,4 +716,17 @@ body {
 }
 .input-form__check-label::before {
   left: -23px;
+}
+
+@media screen and (max-width: 768px) {
+  .login-form {
+    max-width: 728px;
+    min-height: 697px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .login-form__btn {
+    margin-top: auto;
+    margin-bottom: 242px;
+  }
 }/*# sourceMappingURL=style.css.map */
