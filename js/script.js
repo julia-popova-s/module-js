@@ -32,13 +32,13 @@ const app = () => {
   const labelsInp = loginForm.querySelectorAll(".login-form__label");
   const userData = {};
 
-  const addClass = (input, class_input, label, class_label) => {
-    input.classList.add(class_input);
-    label.classList.add(class_label);
+  const addClass = (input, classInput, label, classLabel) => {
+    input.classList.add(classInput);
+    label.classList.add(classLabel);
   };
 
-  const removeClass = (item, class_item) => {
-    item.classList.remove(class_item);
+  const removeClass = (item, classItem) => {
+    item.classList.remove(classItem);
   };
   const addMessage = (message, alert) => {
     alert.innerText = message;
@@ -113,8 +113,8 @@ const app = () => {
       userData.password = userPassword.value;
       loginDetails[0].value = userData.email;
       loginDetails[1].value = userData.password;
-      localStorage.setItem("email", userData.email);
-      localStorage.setItem("password", userData.password);
+      localStorage.setItem("email", JSON.stringify(userData.email));
+      localStorage.setItem("password", JSON.stringify(userData.password));
       console.log("Данные пользователя:");
       console.log(userData);
       inputs.forEach((item) => (item.value = ""));
@@ -132,13 +132,13 @@ const app = () => {
     e.preventDefault();
     localStorage.setItem("approval", checkApprovalMark.checked);
     if (
-      localStorage.getItem("email") === loginDetails[0].value &&
-      localStorage.getItem("password") === loginDetails[1].value
+      JSON.parse(localStorage.getItem("email")) === loginDetails[0].value &&
+      JSON.parse(localStorage.getItem("password")) === loginDetails[1].value
     ) {
       console.log("Вы авторизованы!");
       loginDetails.forEach((item) => (item.value = ""));
       loginDetails.forEach((item, i) => removeClass(item, "border_red", labelsInp[i], "color_red"));
-      console.log(localStorage);
+      console.log(JSON.parse(localStorage.getItem("email")), JSON.parse(localStorage.getItem("password")));
       addMessage("Вы авторизованы!", alertError);
       alertError.classList.add("valid");
       checkApprovalMark.checked = false;
