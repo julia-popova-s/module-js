@@ -18,7 +18,7 @@ const app = () => {
   const userEmail = inputs[0];
   const userPassword = inputs[1];
 
-  // //для проверки формы
+  //для проверки формы
   userEmail.value = "emma658@mail.ru";
   userPassword.value = "pDhIu0IUdb";
 
@@ -52,26 +52,20 @@ const app = () => {
     sectionLogin.classList.add("visible");
     sectionReg.classList.add("hidden");
   }
+
   formReg.addEventListener("input", (e) => {
     removeClass(e.target, "border_red");
-  });
-  inputs.forEach((item, i) => {
-    item.addEventListener("input", () => {
-      removeClass(labels[i], "color_red");
-      addMessage("", alerts[i]);
-    });
-  });
-
-  loginForm.addEventListener("input", (e) => {
-    removeClass(e.target, "border_red");
-  });
-  loginDetails.forEach((item, i) => {
-    item.addEventListener("input", () => {
-      removeClass(labelsInp[i], "color_red");
-    });
+    if (e.target.name === "email") {
+      userEmail.value = e.target.value.trim();
+      removeClass(labels[0], "color_red");
+      addMessage("", alerts[0]);
+    } else if (e.target.name === "password") {
+      userPassword.value = e.target.value.trim().replace(" ", "");
+      removeClass(labels[1], "color_red");
+      addMessage("", alerts[1]);
+    }
   });
 
-  //форма регистрации
   buttonReg.addEventListener("click", (e) => {
     e.preventDefault();
 
@@ -126,8 +120,18 @@ const app = () => {
       return userData;
     }
   });
-  //форма входа
 
+  //форма входа
+  loginForm.addEventListener("input", (e) => {
+    removeClass(e.target, "border_red");
+    if (e.target.name === "userEmail") {
+      loginDetails[0].value = e.target.value.trim();
+      removeClass(labelsInp[0], "color_red");
+    } else if (e.target.name === "userPassword") {
+      loginDetails[1].value = e.target.value.trim().replace(" ", "");
+      removeClass(labelsInp[1], "color_red");
+    }
+  });
   btnInput.addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.setItem("approval", checkApprovalMark.checked);
