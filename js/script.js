@@ -1,78 +1,55 @@
 "use strict";
 
-const app = () => {
-  let money = 70000;
-  let profit = "Фриланс, репетиторство";
-  let purpose = 100000;
-  let budgetDay = Math.floor(money / 30);
+const commercial = document.querySelector(".adv");
+const booksWrapper = document.querySelector(".books");
+let booksList = Array.from(document.querySelectorAll(".book"));
+const body = document.querySelector("body");
 
-  const getMessageError = (message) => {
-    let money = +prompt(message);
-    while (isNaN(money)) {
-      alert("Введите число!");
-      money = +prompt(message);
+// - Удалить рекламу со страницы
+commercial.remove();
+
+// - Восстановить порядок книг.
+const getSortedList = (list, classItem, message) => {
+  for (let k = 0; k < list.length - 1; k++) {
+    for (let i = 0; i < list.length - 1; i++) {
+      list = Array.from(document.querySelectorAll(classItem));
+      let arr = list.filter((item) => item.innerText.indexOf(message) != -1);
+      let first = +arr[i].innerText[6];
+      let second = +arr[i + 1].innerText[6];
+      if (first > second) {
+        arr[i].before(arr[i + 1]);
+      }
     }
-    return money;
-  };
-
-  money = getMessageError("Ваш месячный доход (руб)?");
-  purpose = +prompt("Сколько хотите накопить (руб)?", 150000);
-
-  let amount = getMessageError("Во сколько обойдуться обязательные статьи расходов (руб)?");
-  let extraMoney = getMessageError(
-    `Перечислите возможный доход за ваши дополнительные работы (руб): ${profit.toLowerCase()}?`
-  );
-
-  const getAccumulatedIncome = (money, extraMoney, amount) => money + extraMoney - amount;
-  let accumulatedIncome = getAccumulatedIncome(money, extraMoney, amount);
-
-  const getTargetMonth = (purpose, income) => {
-    let targetMonth = Math.ceil(purpose / income);
-    if (targetMonth > 0 && targetMonth != Infinity) console.log("Цель будет достигнута");
-    if (targetMonth <= 0 || targetMonth === Infinity) console.log("Цель не будет достигнута");
-    return targetMonth;
-  };
-
-  budgetDay = Math.floor(accumulatedIncome / 30);
-  console.log(
-    `Ваш бюджет на месяц с учетом Ваших расходов составляет: ${getAccumulatedIncome(money, extraMoney, amount)} рублей`
-  );
-  console.log(
-    `Ваща цель накопить ${purpose} рублей с учетом Ваших расходов будет достигнута через ${getTargetMonth(
-      purpose,
-      accumulatedIncome
-    )} месяца(-ев)`
-  );
-  console.log(`Дневной бюджет ${budgetDay} рублей`);
-};
-
-app();
-console.log("_____________________");
-
-/*усложненное задание*/
-
-const getNumbers = () => {
-  const numbers = [];
-  numbers.push("28", "58", "35", "48", "35", "42", "78");
-  console.log(`Исходный массив: ${numbers}`);
-
-  let numbersFiltered = numbers.filter((item) => item[0] === "4" || item[0] === "2");
-  console.log(`Элементы массива начинаются с цифр 2 и 4: ${numbersFiltered}`);
-};
-
-getNumbers();
-
-const getUserString = (str) => {
-  let userString = str.trim();
-  if (typeof str === "string" && userString.length < 30) {
-    console.log(`Вы ввели строку: ${userString}`);
-  }
-  if (typeof str === "string" && userString.length >= 30) {
-    console.log(`Вы ввели строку: ${userString.slice(0, 30)}...`);
-    console.log(`Длина видимой части строки ${userString.slice(0, 30).length}`);
   }
 };
-getUserString("  яблоко    ");
-getUserString(
-  "     Наше дело не так однозначно, как может показаться: сплочённость команды профессионалов однозначно определяет каждого участника как способного принимать собственные решения касаемо переосмысления внешнеэкономических политик.     "
-);
+getSortedList(booksList, ".book", "Книга");
+// for (let k = 0; k < booksList.length - 1; k++) {
+//   for (let i = 0; i < booksList.length - 1; i++) {
+//     booksList = Array.from(document.querySelectorAll(".book"));
+//     let first = +booksList[i].innerText[6];
+//     let second = +booksList[i + 1].innerText[6];
+//     if (first > second) {
+//       booksList[i].before(booksList[i + 1]);
+//     }
+//   }
+// }
+
+// - Заменить картинку заднего фона на другую из папки image
+body.style.cssText = "background-image:url('./image/you-dont-know-js.jpg')";
+
+// - Исправить заголовок в книге 3( Получится - "Книга 3. this и Прототипы Объектов")
+const titles = document.querySelectorAll(".book h2 a");
+titles[2].textContent = "Книга 3. this и Прототипы Объектов";
+
+// - Восстановить порядок глав во второй и пятой книге (внимательно инспектируйте индексы элементов, поможет dev tools)
+let chapterList = Array.from(document.querySelectorAll(".book__chapter-list li"));
+console.log(chapterList);
+
+let listChap = chapterList.filter((item) => item.innerText.indexOf("Глава") != -1);
+getSortedList(listChap, ".book__chapter-list li", "Глава");
+
+let listChapApp = chapterList.filter((item) => item.innerText.indexOf("Приложение") != -1);
+console.log(listChapApp);
+// getSortedList(listChapApp, ".book__chapter-list li", "Приложение");
+
+// - в шестой книге добавить главу “Глава 8: За пределами ES6” и поставить её в правильное место
