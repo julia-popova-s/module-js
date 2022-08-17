@@ -15,9 +15,10 @@
   </head>
 
   <body>
-    <section class="registration">
+    <section class="registration visible" id="reg">
       <div class="container">
         <form class="login-form" id="reg-form">
+          <button class="login-form__autho" type="button">Авторизоваться</button>
           <div class="login-form__title">Регистрация</div>
           <label class="login-form__label">Email</label>
           <div class="login-form__item">
@@ -63,7 +64,7 @@
               autocomplete="new-password"
             />
           </div>
-          <p class="login-form__alert login-form__alert_mrg"></p>
+          <p class="login-form__alert"></p>
 
           <div class="checkbox login-form__check">
             <svg
@@ -93,9 +94,10 @@
       </div>
     </section>
 
-    <section class="login">
+    <section class="login hidden" id="log">
       <div class="container">
         <form class="login-form input-form" id="login-id">
+          <button class="login-form__reg" type="button">Зарегистрироваться</button>
           <div class="login-form__title">Вход</div>
           <label class="login-form__label input-form__label">Email</label>
           <input
@@ -104,7 +106,6 @@
             name="userEmail"
             autocomplete="on"
             placeholder="Введите email"
-            required
           />
           <label class="login-form__label input-form__label">Пароль</label>
           <input
@@ -115,7 +116,7 @@
             autocomplete="current-password"
           />
           <div class="checkbox input-form__check">
-            <input type="checkbox" class="checkbox__mark" id="checkbox-input" name="rules" />
+            <input type="checkbox" class="checkbox__mark" id="checkbox-input" name="toMail" />
             <label class="checkbox__label input-form__check-label" for="checkbox-input">
               Я согласен получать обновления на почту
             </label>

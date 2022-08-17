@@ -12,6 +12,8 @@ const buttonReg = formReg.querySelector(".login-form__btn");
 const alerts = formReg.querySelectorAll(".login-form__alert");
 let loginForm = sectionLogin.querySelector("#login-id");
 let loginDetails = loginForm.querySelectorAll(".login-form__input");
+const toAuthorization = formReg.querySelector(".login-form__autho");
+const toRegistration = loginForm.querySelector(".login-form__reg");
 
 const checkbox = formReg.querySelector(".checkbox");
 const checkboxMark = formReg.querySelector(".checkbox__mark");
@@ -19,7 +21,7 @@ const alertCheckbox = alerts[2];
 const userEmail = inputs[0];
 const userPassword = inputs[1];
 
-const userData = {};
+const userData = [];
 
 const addClass = (input, classInput, label, classLabel) => {
   input.classList.add(classInput);
@@ -35,13 +37,23 @@ const addMessage = (message, alert) => {
 //для проверки формы
 userEmail.value = "emma658@mail.ru";
 userPassword.value = "pDhIu0IUdb";
-if (localStorage.length === 0) {
-  sectionReg.classList.add("visible");
-  sectionLogin.classList.add("hidden");
-} else {
-  sectionLogin.classList.add("visible");
+sectionReg.classList.add("visible");
+sectionReg.classList.remove("hidden");
+sectionLogin.classList.add("hidden");
+sectionLogin.classList.remove("visible");
+
+toAuthorization.addEventListener("click", () => {
+  sectionReg.classList.remove("visible");
   sectionReg.classList.add("hidden");
-}
+  sectionLogin.classList.remove("hidden");
+  sectionLogin.classList.add("visible");
+});
+toRegistration.addEventListener("click", () => {
+  sectionReg.classList.remove("hidden");
+  sectionReg.classList.add("visible");
+  sectionLogin.classList.remove("visible");
+  sectionLogin.classList.add("hidden");
+});
 formReg.addEventListener("input", (e) => {
   removeClass(e.target, "border_red");
   if (e.target.name === "email") {
@@ -91,15 +103,15 @@ buttonReg.addEventListener("click", (e) => {
   });
 
   if (validateEmail(userEmail.value) && userPassword.value.length >= 8 && checkboxMark.checked) {
-    userData.email = userEmail.value;
-    userData.password = userPassword.value;
-    loginDetails[0].value = userData.email;
-    loginDetails[1].value = userData.password;
-    localStorage.setItem(userData.email, JSON.stringify(userData));
+    userData.push(userEmail.value);
+    userData.push(userPassword.value);
+    loginDetails[0].value = userData[0];
+    loginDetails[1].value = userData[1];
+    localStorage.setItem(userEmail.value, JSON.stringify(userData));
 
     console.log("Данные пользователя:");
     // console.log(userData);
-    console.log(localStorage.getItem(userData.email));
+    console.log(localStorage.getItem(userEmail.value));
     // console.log(localStorage);
     inputs.forEach((item) => (item.value = ""));
     checkboxMark.checked = false;

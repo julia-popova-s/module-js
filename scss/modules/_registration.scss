@@ -13,15 +13,30 @@
   box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   max-width: 600px;
-  min-height: 412px;
+  height: 412px;
   margin: 0 auto;
-  padding: 30px 44px 26px 34px;
+  padding: 7px 44px 26px 34px;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease;
+  transition: all 0.3s linear;
+  animation: showFormRegistration 1s;
+  animation-fill-mode: both;
+
 
   @media screen and (max-width:768px) {
     padding-top: 38px;
+  }
+
+  &__link {
+    color: red;
+  }
+
+  &__autho,
+  &__reg {
+    color: $color-back;
+    background-color: transparent;
+    text-decoration: underline;
+    align-self: flex-end;
   }
 
   &__title {
@@ -94,10 +109,6 @@
     @include fontSetContent(500, 10px, 16px, $color-errors);
     margin-bottom: 12px;
     padding-left: 13px;
-
-    &_mrg {
-      margin-bottom: 16px;
-    }
 
     &_pdg {
       padding-top: 3px;

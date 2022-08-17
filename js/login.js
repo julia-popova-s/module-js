@@ -2,7 +2,7 @@ const btnInput = loginForm.querySelector(".login-form__btn");
 const checkApprovalMark = loginForm.querySelector(".checkbox__mark");
 const alertError = loginForm.querySelector(".login-form__alert");
 const labelsInp = loginForm.querySelectorAll(".login-form__label");
-
+let userDB;
 loginForm.addEventListener("input", (e) => {
   removeClass(e.target, "border_red");
   if (e.target.name === "userEmail") {
@@ -16,18 +16,21 @@ loginForm.addEventListener("input", (e) => {
 
 btnInput.addEventListener("click", (e) => {
   e.preventDefault();
-  const userData = JSON.parse(localStorage.getItem(loginDetails[0].value));
+  userDB = JSON.parse(localStorage.getItem(loginDetails[0].value));
   console.log("Данные из хранилища:");
-  console.log(userData);
-  userData.consentToMail = checkApprovalMark.checked;
-  localStorage.setItem(loginDetails[0].value, JSON.stringify(userData));
+  console.log(userDB);
 
-  if (userData.email === loginDetails[0].value && userData.password === loginDetails[1].value) {
-    console.log("Вы авторизованы!");
-    loginDetails.forEach((item) => (item.value = ""));
-    loginDetails.forEach((item, i) => removeClass(item, "border_red", labelsInp[i], "color_red"));
+  if (userDB != null && userDB[0] === loginDetails[0].value && userDB[1] === loginDetails[1].value) {
     addMessage("Вы авторизованы!", alertError);
     alertError.classList.add("valid");
+    if (checkApprovalMark.checked) {
+      userDB.push(checkApprovalMark.checked);
+    }
+    localStorage.setItem(loginDetails[0].value, JSON.stringify(userDB));
+    console.log("Вы авторизованы!");
+    console.log(localStorage);
+    loginDetails.forEach((item) => (item.value = ""));
+    // loginDetails.forEach((item, i) => removeClass(item, "border_red", labelsInp[i], "color_red"));
     checkApprovalMark.checked = false;
   } else if (loginDetails[0].value === "" || loginDetails[1].value === "") {
     alertError.classList.remove("valid");
@@ -40,4 +43,3 @@ btnInput.addEventListener("click", (e) => {
     addMessage("Неверный логин или пароль", alertError);
   }
 });
-localStorage.clear();
