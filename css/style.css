@@ -578,7 +578,7 @@ body {
   max-width: 600px;
   height: 412px;
   margin: 0 auto;
-  padding: 7px 44px 26px 34px;
+  padding: 27px 44px 26px 34px;
   display: flex;
   flex-direction: column;
   transition: all 0.3s linear;
@@ -586,20 +586,25 @@ body {
           animation: showFormRegistration 1s;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
+  position: relative;
 }
 @media screen and (max-width: 768px) {
   .login-form {
     padding-top: 38px;
   }
 }
-.login-form__link {
-  color: red;
-}
 .login-form__autho, .login-form__reg {
+  position: absolute;
+  top: 11px;
+  right: 11px;
   color: #1B2473;
   background-color: transparent;
-  text-decoration: underline;
   align-self: flex-end;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: #1A226B;
+  padding: 0;
 }
 .login-form__title {
   text-align: center;
@@ -728,7 +733,7 @@ body {
 }
 
 .input-form {
-  padding: 7px 45px;
+  padding: 27px 45px 26px 45px;
 }
 @media screen and (max-width: 768px) {
   .input-form {

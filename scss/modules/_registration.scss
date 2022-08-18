@@ -15,28 +15,29 @@
   max-width: 600px;
   height: 412px;
   margin: 0 auto;
-  padding: 7px 44px 26px 34px;
+  padding: 27px 44px 26px 34px;
   display: flex;
   flex-direction: column;
   transition: all 0.3s linear;
   animation: showFormRegistration 1s;
   animation-fill-mode: both;
+  position: relative;
 
 
   @media screen and (max-width:768px) {
     padding-top: 38px;
   }
 
-  &__link {
-    color: red;
-  }
-
   &__autho,
   &__reg {
+    position: absolute;
+    top: 11px;
+    right: 11px;
     color: $color-back;
     background-color: transparent;
-    text-decoration: underline;
     align-self: flex-end;
+    @include fontSetContent(700, 14px, 16px, #1A226B);
+    padding: 0;
   }
 
   &__title {

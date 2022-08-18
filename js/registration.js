@@ -66,6 +66,7 @@ formReg.addEventListener("input", (e) => {
     addMessage("", alerts[1]);
   }
 });
+
 buttonReg.addEventListener("click", (e) => {
   e.preventDefault();
 
