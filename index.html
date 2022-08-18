@@ -61,14 +61,14 @@
               placeholder="Введите пароль"
               type="password"
               name="password"
-              autocomplete="new-password"
+              autocomplete="current-password"
             />
           </div>
           <p class="login-form__alert"></p>
 
           <div class="checkbox login-form__check">
             <svg
-              class="login-form__star"
+              class="login-form__check-star"
               width="9"
               height="8"
               viewBox="0 0 9 8"
@@ -96,7 +96,7 @@
 
     <section class="login hidden" id="log">
       <div class="container">
-        <form class="login-form input-form" id="login-id">
+        <form class="login-form" id="login-id">
           <button class="login-form__reg" type="button">Зарегистрироваться</button>
           <div class="login-form__title">Вход</div>
           <label class="login-form__label">Email</label>
@@ -143,7 +143,7 @@
           <p class="login-form__alert"></p>
           <div class="checkbox login-form__check">
             <svg
-              class="login-form__star"
+              class="login-form__check-star"
               width="9"
               height="8"
               viewBox="0 0 9 8"
@@ -163,8 +163,6 @@
         </form>
       </div>
     </section>
-    <script src="./js/registration.js"></script>
-    <!-- <script src="./js/login.js"></script> -->
-    <!-- <script src="./js/script.js"></script> -->
+    <script src="./js/login.js"></script>
   </body>
 </html>
