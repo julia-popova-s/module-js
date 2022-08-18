@@ -34,6 +34,7 @@ const removeClass = (item, classItem) => {
 const addMessage = (message, alert) => {
   alert.innerText = message;
 };
+
 //для проверки формы
 userEmail.value = "emma658@mail.ru";
 userPassword.value = "pDhIu0IUdb";
@@ -66,11 +67,7 @@ formReg.addEventListener("input", (e) => {
     addMessage("", alerts[1]);
   }
 });
-
-buttonReg.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  //валидация inputs
+const validateInputs = (inputs, labels, alerts) => {
   inputs.forEach((item, i) => {
     if (item.value === "") {
       addClass(item, "border_red", labels[i], "color_red");
@@ -87,21 +84,26 @@ buttonReg.addEventListener("click", (e) => {
     addClass(inputs[1], "border_red", labels[1], "color_red");
     addMessage("Пароль должен содержать как минимум 8 символов", alerts[1]);
   }
-
-  //валидация checkbox
-
+};
+const validateCheckbox = (checkbox, checkboxMark, alert) => {
   if (!checkboxMark.checked) {
     addClass(checkbox, "color_red", checkboxMark, "border_red");
-    addMessage("Поле обязательно для заполнения", alertCheckbox);
+    addMessage("Поле обязательно для заполнения", alert);
   } else {
-    addMessage("", alertCheckbox);
+    addMessage("", alert);
   }
 
   checkboxMark.addEventListener("change", () => {
     removeClass(checkbox, "color_red");
     removeClass(checkboxMark, "border_red");
-    addMessage("", alertCheckbox);
+    addMessage("", alert);
   });
+};
+buttonReg.addEventListener("click", (e) => {
+  e.preventDefault();
+  validateInputs(inputs, labels, alerts);
+
+  validateCheckbox(checkbox, checkboxMark, alertCheckbox);
 
   if (validateEmail(userEmail.value) && userPassword.value.length >= 8 && checkboxMark.checked) {
     userData.push(userEmail.value);
@@ -109,7 +111,6 @@ buttonReg.addEventListener("click", (e) => {
     loginDetails[0].value = userData[0];
     loginDetails[1].value = userData[1];
     localStorage.setItem(userEmail.value, JSON.stringify(userData));
-
     console.log("Данные пользователя:");
     // console.log(userData);
     console.log(localStorage.getItem(userEmail.value));
