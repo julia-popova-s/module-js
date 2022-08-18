@@ -721,7 +721,6 @@ body {
 
 .valid {
   color: #1A226B;
-  font-size: 12px;
 }
 
 .visible {
@@ -732,31 +731,10 @@ body {
   display: none;
 }
 
-.input-form {
-  padding: 27px 45px 26px 45px;
-}
 @media screen and (max-width: 768px) {
   .input-form {
     padding: 38px 45px 0 45px;
   }
-}
-.input-form__label {
-  padding-left: 8px;
-}
-.input-form__input {
-  margin-bottom: 16px;
-}
-.input-form__check {
-  margin-bottom: 13px;
-}
-.input-form__check-label {
-  padding-left: 10px;
-}
-.input-form__check-label::after {
-  left: -19px;
-}
-.input-form__check-label::before {
-  left: -23px;
 }
 
 @media screen and (max-width: 768px) {

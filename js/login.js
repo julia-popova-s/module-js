@@ -1,8 +1,8 @@
-const btnInput = loginForm.querySelector(".login-form__btn");
-const checkApprovalMark = loginForm.querySelector(".checkbox__mark");
-const alertError = loginForm.querySelector(".login-form__alert");
-const labelsInp = loginForm.querySelectorAll(".login-form__label");
-let userDB;
+// const btnInput = loginForm.querySelector(".login-form__btn");
+// const checkApprovalMark = loginForm.querySelector(".checkbox__mark");
+// const alertsErrors = loginForm.querySelectorAll(".login-form__alert");
+// const labelsInp = loginForm.querySelectorAll(".login-form__label");
+// let userDB;
 loginForm.addEventListener("input", (e) => {
   removeClass(e.target, "border_red");
   if (e.target.name === "userEmail") {
@@ -21,8 +21,8 @@ btnInput.addEventListener("click", (e) => {
   console.log(userDB);
 
   if (userDB != null && userDB[0] === loginDetails[0].value && userDB[1] === loginDetails[1].value) {
-    addMessage("Вы авторизованы!", alertError);
-    alertError.classList.add("valid");
+    addMessage("Вы авторизованы!", alertsErrors[1]);
+    alertsErrors[1].classList.add("valid");
     if (checkApprovalMark.checked) {
       userDB.push(checkApprovalMark.checked);
     }
@@ -30,16 +30,16 @@ btnInput.addEventListener("click", (e) => {
     console.log("Вы авторизованы!");
     console.log(localStorage);
     loginDetails.forEach((item) => (item.value = ""));
-    // loginDetails.forEach((item, i) => removeClass(item, "border_red", labelsInp[i], "color_red"));
+    loginDetails.forEach((item, i) => removeClass(item, "border_red", labelsInp[i], "color_red"));
     checkApprovalMark.checked = false;
   } else if (loginDetails[0].value === "" || loginDetails[1].value === "") {
-    alertError.classList.remove("valid");
+    alertsErrors[1].classList.remove("valid");
     loginDetails.forEach((item, i) => addClass(item, "border_red", labelsInp[i], "color_red"));
-    addMessage("Введите логин и пароль", alertError);
+    addMessage("Введите логин и пароль", alertsErrors[1]);
   } else {
     console.log("Неверный логин или пароль");
-    alertError.classList.remove("valid");
+    alertsErrors[1].classList.remove("valid");
     loginDetails.forEach((item, i) => addClass(item, "border_red", labelsInp[i], "color_red"));
-    addMessage("Неверный логин или пароль", alertError);
+    addMessage("Неверный логин или пароль", alertsErrors[1]);
   }
 });

@@ -1,32 +1,8 @@
 .input-form {
-  padding: 27px 45px 26px 45px;
+
 
   @media screen and (max-width:768px) {
     padding: 38px 45px 0 45px;
-  }
-
-  &__label {
-    padding-left: 8px;
-  }
-
-  &__input {
-    margin-bottom: 16px;
-  }
-
-  &__check {
-    margin-bottom: 13px;
-
-    &-label {
-      padding-left: 10px;
-
-      &::after {
-        left: -19px;
-      }
-
-      &::before {
-        left: -23px;
-      }
-    }
   }
 }
 
