@@ -141,6 +141,8 @@ const app = () => {
     checkForEmptyLines(loginDetails, labelsInp, alertsErrors);
     validateCheckbox(checkApproval, checkApprovalMark, alertsErrors[2]);
     userDB = JSON.parse(localStorage.getItem(loginDetails[0].value));
+    console.log("Данные из хранилища");
+    console.log(userDB);
 
     if (
       userDB != null &&
@@ -159,7 +161,7 @@ const app = () => {
         window.location.href = "/pages/main.html";
       }, 2 * 1000);
     }
-    if (userDB === null) {
+    if (userDB === null || (userDB[0] === loginDetails[0].value && userDB[1] != loginDetails[1].value)) {
       loginDetails.forEach((item, i) => addClass(item, "border_red", labelsInp[i], "color_red"));
       addMessage("Логин или пароль неверный", alertsErrors[1]);
     }

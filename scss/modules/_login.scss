@@ -118,7 +118,6 @@
   &__alert {
     @include fontSetContent(500, 10px, 16px, $color-errors);
     margin-bottom: 13px;
-    // padding-left: 13px;
 
     &_pdg {
       padding-top: 3px;
