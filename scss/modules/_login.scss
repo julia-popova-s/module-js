@@ -15,13 +15,29 @@
   max-width: 600px;
   height: 412px;
   margin: 0 auto;
-  padding: 30px 44px 26px 34px;
+  padding: 27px 45px 26px 45px;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease;
+  transition: all 0.3s linear;
+  animation: showFormRegistration 1s;
+  animation-fill-mode: both;
+  position: relative;
+
 
   @media screen and (max-width:768px) {
     padding-top: 38px;
+  }
+
+  &__autho,
+  &__reg {
+    position: absolute;
+    top: 11px;
+    right: 11px;
+    color: $color-back;
+    background-color: transparent;
+    align-self: flex-end;
+    @include fontSetContent(700, 14px, 16px, #1A226B);
+    padding: 0;
   }
 
   &__title {
@@ -33,7 +49,7 @@
 
   &__label {
     margin-bottom: 3px;
-    padding-left: 19px;
+    padding-left: 8px;
     @include fontSetContent(700, 16px, 16px, $color-text);
     position: relative;
   }
@@ -42,11 +58,25 @@
     display: flex;
     align-items: flex-start;
     max-width: 100%;
+    position: relative;
+  }
 
-    svg {
-      margin-top: 7px;
-      margin-right: 3px;
-    }
+  &__star {
+    position: absolute;
+    top: 7px;
+    left: -12px;
+  }
+
+  &__check {
+    position: relative;
+  }
+
+  &__check-star {
+
+    position: absolute;
+
+    top: 4px;
+    left: -12px;
   }
 
   &__input {
@@ -66,23 +96,18 @@
       transition: border 0.3s ease;
     }
 
-
     &::placeholder {
       @include fontSetContent(700, 28px, 36px, $color-placeholder);
     }
-
-
   }
 
-  &__star {
-    margin-bottom: 10px;
-  }
 
-  &__label[class~="color_red"]+&__item>svg path {
+
+  &__label[class~="color_red"]+&__item>&__star path {
     fill: $color-errors;
   }
 
-  &__check[class~="color_red"]>svg path {
+  &__check[class~="color_red"]>&__check-star path {
     fill: $color-errors;
   }
 
@@ -117,6 +142,20 @@
   }
 }
 
+.login-form {
+  @media screen and (max-width:768px) {
+    max-width: 728px;
+    min-height: 697px;
+  }
+
+  &__btn {
+    @media screen and (max-width:768px) {
+      margin-top: auto;
+      margin-bottom: 242px;
+    }
+  }
+}
+
 .border_red {
   border: 2px solid $color-errors;
 }
@@ -127,7 +166,6 @@
 
 .valid {
   color: $color-btn;
-  font-size: 12px;
 }
 
 .visible {
