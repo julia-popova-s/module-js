@@ -456,31 +456,6 @@ textarea {
   padding: 0.2em 0;
 }
 
-@-webkit-keyframes showFormRegistration {
-  0%, 49.99% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(20%);
-  }
-  50%, 100% {
-    opacity: 1;
-  }
-}
-
-@keyframes showFormRegistration {
-  0%, 49.99% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(20%);
-  }
-  50%, 100% {
-    opacity: 1;
-  }
-}
 .checkbox {
   display: flex;
   gap: 10px;
@@ -496,9 +471,8 @@ textarea {
   color: #787878;
   text-align: left;
   position: relative;
-  padding-left: 10px;
-  min-height: 24px;
-  padding-top: 4px;
+  padding-left: 5px;
+  min-height: 20px;
 }
 .checkbox__label::after, .checkbox__label::before {
   position: absolute;
@@ -509,16 +483,16 @@ textarea {
   height: 24px;
   width: 24px;
   box-sizing: border-box;
-  top: 0;
-  left: -23px;
+  top: -4px;
+  left: -29px;
   background-color: #FEFEFE;
   border: 2px solid #787878;
   border-radius: 7px;
 }
 .checkbox__label::after {
   content: url("../img/vector.svg");
-  left: -19px;
-  top: 5px;
+  left: -25px;
+  top: 1px;
 }
 .checkbox__link {
   color: #787878;
@@ -579,33 +553,15 @@ body {
   max-width: 600px;
   height: 412px;
   margin: 0 auto;
-  padding: 27px 45px 26px 45px;
+  padding: 30px 44px 26px 34px;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s linear;
-  -webkit-animation: showFormRegistration 1s;
-          animation: showFormRegistration 1s;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
-  position: relative;
+  transition: all 0.3s ease;
 }
 @media screen and (max-width: 768px) {
   .login-form {
     padding-top: 38px;
   }
-}
-.login-form__autho, .login-form__reg {
-  position: absolute;
-  top: 11px;
-  right: 11px;
-  color: #1B2473;
-  background-color: transparent;
-  align-self: flex-end;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
-  color: #1A226B;
-  padding: 0;
 }
 .login-form__title {
   text-align: center;
@@ -617,7 +573,7 @@ body {
 }
 .login-form__label {
   margin-bottom: 3px;
-  padding-left: 8px;
+  padding-left: 19px;
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
@@ -628,20 +584,10 @@ body {
   display: flex;
   align-items: flex-start;
   max-width: 100%;
-  position: relative;
 }
-.login-form__star {
-  position: absolute;
-  top: 7px;
-  left: -12px;
-}
-.login-form__check {
-  position: relative;
-}
-.login-form__check-star {
-  position: absolute;
-  top: 4px;
-  left: -12px;
+.login-form__item svg {
+  margin-top: 7px;
+  margin-right: 3px;
 }
 .login-form__input {
   width: 100%;
@@ -680,10 +626,13 @@ body {
   line-height: 36px;
   color: #CCCCCC;
 }
-.login-form__label[class~=color_red] + .login-form__item > .login-form__star path {
+.login-form__star {
+  margin-bottom: 10px;
+}
+.login-form__label[class~=color_red] + .login-form__item > svg path {
   fill: #CB2424;
 }
-.login-form__check[class~=color_red] > .login-form__check-star path {
+.login-form__check[class~=color_red] > svg path {
   fill: #CB2424;
 }
 .login-form .checkbox__mark[class~=border_red] + .checkbox__label::before {
@@ -718,6 +667,54 @@ body {
   transition: all 0.3s ease;
 }
 
+.border_red {
+  border: 2px solid #CB2424;
+}
+
+.color_red {
+  color: #CB2424;
+}
+
+.valid {
+  color: #1A226B;
+  font-size: 12px;
+}
+
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.input-form {
+  padding: 26px 45px;
+}
+@media screen and (max-width: 768px) {
+  .input-form {
+    padding: 38px 45px 0 45px;
+  }
+}
+.input-form__label {
+  padding-left: 8px;
+}
+.input-form__input {
+  margin-bottom: 16px;
+}
+.input-form__check {
+  margin-bottom: 13px;
+}
+.input-form__check-label {
+  padding-left: 10px;
+}
+.input-form__check-label::after {
+  left: -19px;
+}
+.input-form__check-label::before {
+  left: -23px;
+}
+
 @media screen and (max-width: 768px) {
   .login-form {
     max-width: 728px;
@@ -729,24 +726,4 @@ body {
     margin-top: auto;
     margin-bottom: 242px;
   }
-}
-
-.border_red {
-  border: 2px solid #CB2424;
-}
-
-.color_red {
-  color: #CB2424;
-}
-
-.valid {
-  color: #1A226B;
-}
-
-.visible {
-  display: block;
-}
-
-.hidden {
-  display: none;
 }/*# sourceMappingURL=style.css.map */
