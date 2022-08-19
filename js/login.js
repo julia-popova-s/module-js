@@ -153,8 +153,8 @@ const app = () => {
       addMessage("Вы авторизованы!", alertsErrors[1]);
       userDB.push(checkApprovalMark.checked);
       localStorage.setItem(loginDetails[0].value, JSON.stringify(userDB));
-      labelsInp.forEach((item, i) => removeClass(item, "color_red"));
-      loginDetails.forEach((item, i) => removeClass(item, "border_red"));
+      labelsInp.forEach((item) => removeClass(item, "color_red"));
+      loginDetails.forEach((item) => removeClass(item, "border_red"));
       loginDetails.forEach((item) => (item.value = ""));
       checkApprovalMark.checked = false;
       setTimeout(function () {
@@ -163,7 +163,7 @@ const app = () => {
     }
     if (userDB === null || (userDB[0] === loginDetails[0].value && userDB[1] != loginDetails[1].value)) {
       loginDetails.forEach((item, i) => addClass(item, "border_red", labelsInp[i], "color_red"));
-      addMessage("Логин или пароль неверный", alertsErrors[1]);
+      addMessage("Логин или Пароль неверный", alertsErrors[1]);
     }
   });
 };
