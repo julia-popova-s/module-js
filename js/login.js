@@ -29,7 +29,7 @@ const app = () => {
   const alertsErrors = formLogin.querySelectorAll(".login-form__alert");
   const labelsInp = formLogin.querySelectorAll(".login-form__label");
   const toRegistration = formLogin.querySelector(".login-form__reg");
-  const userData = [];
+  const userData = {};
   let userDB;
 
   const addClass = (input, classInput, label, classLabel) => {
@@ -46,6 +46,7 @@ const app = () => {
 
   //для проверки формы
   userEmail.value = "emma658@mail.ru";
+  userPassword.value = "JIgtiy8fb";
 
   toAuthorization.addEventListener("click", () => {
     sectionReg.classList.remove("visible");
@@ -119,10 +120,10 @@ const app = () => {
     validateCheckbox(checkbox, checkboxMark, alertCheckbox);
 
     if (validateEmail(userEmail.value) && userPassword.value.length >= 8 && checkboxMark.checked) {
-      userData.push(userEmail.value);
-      userData.push(userPassword.value);
-      loginDetails[0].value = userData[0];
-      loginDetails[1].value = userData[1];
+      userData.email = userEmail.value;
+      userData.password = userPassword.value;
+      loginDetails[0].value = userData.email;
+      loginDetails[1].value = userData.password;
       localStorage.setItem(userEmail.value, JSON.stringify(userData));
       console.log("Данные пользователя:");
       console.log(localStorage.getItem(userEmail.value));
@@ -146,22 +147,28 @@ const app = () => {
 
     if (
       userDB != null &&
-      userDB[0] === loginDetails[0].value &&
-      userDB[1] === loginDetails[1].value &&
+      userDB.email === loginDetails[0].value &&
+      userDB.password === loginDetails[1].value &&
       checkApprovalMark.checked
     ) {
       addMessage("Вы авторизованы!", alertsErrors[1]);
-      userDB.push(checkApprovalMark.checked);
+      userDB.approval = checkApprovalMark.checked;
       localStorage.setItem(loginDetails[0].value, JSON.stringify(userDB));
       labelsInp.forEach((item) => removeClass(item, "color_red"));
       loginDetails.forEach((item) => removeClass(item, "border_red"));
       loginDetails.forEach((item) => (item.value = ""));
       checkApprovalMark.checked = false;
       setTimeout(function () {
-        window.location.href = "/pages/main.html";
+        window.location.replace("/pages/main.html");
       }, 2 * 1000);
     }
-    if (userDB === null || (userDB[0] === loginDetails[0].value && userDB[1] != loginDetails[1].value)) {
+    if (
+      (userDB === null && loginDetails[0].value != "" && loginDetails[1].value != "") ||
+      (userDB != null &&
+        userDB.email === loginDetails[0].value &&
+        userDB.password != loginDetails[1].value &&
+        loginDetails[1].value != "")
+    ) {
       loginDetails.forEach((item, i) => addClass(item, "border_red", labelsInp[i], "color_red"));
       addMessage("Логин или Пароль неверный", alertsErrors[1]);
     }
