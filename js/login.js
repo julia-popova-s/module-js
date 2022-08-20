@@ -164,7 +164,10 @@ const app = () => {
     }
     if (
       (userDB === null && loginDetails[0].value != "" && loginDetails[1].value != "") ||
-      (userDB != null && userDB.password != loginDetails[1].value && loginDetails[1].value != "")
+      (userDB != null &&
+        userDB.email === loginDetails[0].value &&
+        userDB.password != loginDetails[1].value &&
+        loginDetails[1].value != "")
     ) {
       loginDetails.forEach((item, i) => addClass(item, "border_red", labelsInp[i], "color_red"));
       addMessage("Логин или Пароль неверный", alertsErrors[1]);

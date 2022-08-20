@@ -1,10 +1,12 @@
 .registration,
 .login {
   background-color: $color-back;
+  padding-bottom: 243px;
   padding-top: 82px;
 
   @media screen and (max-width:768px) {
-    padding-top: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
 
@@ -36,8 +38,14 @@
     color: $color-back;
     background-color: transparent;
     align-self: flex-end;
-    @include fontSetContent(700, 14px, 16px, #1A226B);
+    @include fontSetContent(700, 14px, 16px, $color-btn);
     padding: 0;
+    transition: all 0.2s linear;
+
+    &:hover {
+      transition: all 0.2s linear;
+      color: black;
+    }
   }
 
   &__title {
@@ -101,17 +109,24 @@
     }
   }
 
-
+  &__label+&__item>&__star path,
+  .checkbox__mark+.checkbox__label::before,
+  &__check>&__check-star path {
+    transition: all 0.1s linear;
+  }
 
   &__label[class~="color_red"]+&__item>&__star path {
     fill: $color-errors;
+    transition: all 0.1s linear;
   }
 
   &__check[class~="color_red"]>&__check-star path {
+    transition: all 0.1s linear;
     fill: $color-errors;
   }
 
   .checkbox__mark[class~="border_red"]+.checkbox__label::before {
+    transition: all 0.1s linear;
     border: 2px solid $color-errors;
   }
 

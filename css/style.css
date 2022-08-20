@@ -550,25 +550,21 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 1400px;
+  max-width: 1440px;
   padding: 0 20px;
-  height: 737px;
-}
-@media screen and (max-width: 768px) {
-  .container {
-    padding-top: 20px;
-  }
 }
 
 .registration,
 .login {
   background-color: #1B2473;
+  padding-bottom: 243px;
   padding-top: 82px;
 }
 @media screen and (max-width: 768px) {
   .registration,
 .login {
-    padding-top: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
 
@@ -606,6 +602,11 @@ body {
   line-height: 16px;
   color: #1A226B;
   padding: 0;
+  transition: all 0.2s linear;
+}
+.login-form__autho:hover, .login-form__reg:hover {
+  transition: all 0.2s linear;
+  color: black;
 }
 .login-form__title {
   text-align: center;
@@ -680,13 +681,20 @@ body {
   line-height: 36px;
   color: #CCCCCC;
 }
+.login-form__label + .login-form__item > .login-form__star path,
+.login-form .checkbox__mark + .checkbox__label::before, .login-form__check > .login-form__check-star path {
+  transition: all 0.1s linear;
+}
 .login-form__label[class~=color_red] + .login-form__item > .login-form__star path {
   fill: #CB2424;
+  transition: all 0.1s linear;
 }
 .login-form__check[class~=color_red] > .login-form__check-star path {
+  transition: all 0.1s linear;
   fill: #CB2424;
 }
 .login-form .checkbox__mark[class~=border_red] + .checkbox__label::before {
+  transition: all 0.1s linear;
   border: 2px solid #CB2424;
 }
 .login-form__alert {
