@@ -44,10 +44,6 @@ const app = () => {
     alert.innerText = message;
   };
 
-  //для проверки формы
-  userEmail.value = "emma658@mail.ru";
-  userPassword.value = "JIgtiy8fb";
-
   toAuthorization.addEventListener("click", () => {
     sectionReg.classList.remove("visible");
     sectionReg.classList.add("hidden");
@@ -122,8 +118,6 @@ const app = () => {
     if (validateEmail(userEmail.value) && userPassword.value.length >= 8 && checkboxMark.checked) {
       userData.email = userEmail.value;
       userData.password = userPassword.value;
-      loginDetails[0].value = userData.email;
-      loginDetails[1].value = userData.password;
       localStorage.setItem(userEmail.value, JSON.stringify(userData));
       console.log("Данные пользователя:");
       console.log(localStorage.getItem(userEmail.value));
@@ -141,10 +135,21 @@ const app = () => {
     e.preventDefault();
     checkForEmptyLines(loginDetails, labelsInp, alertsErrors);
     validateCheckbox(checkApproval, checkApprovalMark, alertsErrors[2]);
-    userDB = JSON.parse(localStorage.getItem(loginDetails[0].value));
-    console.log("Данные из хранилища");
-    console.log(userDB);
 
+    if (!validateEmail(loginDetails[0].value) && loginDetails[0].value != "" && loginDetails[1].value != "") {
+      loginDetails.forEach((item, i) => addClass(item, "border_red", labelsInp[i], "color_red"));
+      addMessage("Логин или Пароль неверный", alertsErrors[1]);
+    }
+    if (
+      validateEmail(loginDetails[0].value) &&
+      loginDetails[0].value != "" &&
+      loginDetails[1].value != "" &&
+      checkApprovalMark.checked
+    ) {
+      labelsInp.forEach((item) => removeClass(item, "color_red"));
+      loginDetails.forEach((item) => removeClass(item, "border_red"));
+      userDB = JSON.parse(localStorage.getItem(loginDetails[0].value));
+    }
     if (
       userDB != null &&
       userDB.email === loginDetails[0].value &&
