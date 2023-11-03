@@ -1,0 +1,32 @@
+$white: #FEFEFE;
+$black: #000000;
+$color-btn: #1A226B;
+$color-back: #1B2473;
+$color-errors: #CB2424;
+$color-text: #787878;
+$color-placeholder: #CCCCCC;
+
+@mixin fontSetContent($weight, $size, $height, $color) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
+  color: $color;
+}
+
+@keyframes showFormRegistration {
+
+  0%,
+  49.99% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(20%);
+  }
+
+  50%,
+  100% {
+    opacity: 1;
+  }
+}
