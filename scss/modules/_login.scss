@@ -1,0 +1,192 @@
+.registration,
+.login {
+  background-color: $color-back;
+  padding-bottom: 243px;
+  padding-top: 82px;
+
+  @media screen and (max-width:768px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+.login-form {
+  background-color: $white;
+  box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  max-width: 600px;
+  height: 412px;
+  margin: 0 auto;
+  padding: 27px 45px 26px 45px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s linear;
+  animation: showFormRegistration 1s;
+  animation-fill-mode: both;
+  position: relative;
+
+
+  @media screen and (max-width:768px) {
+    padding-top: 38px;
+  }
+
+  &__autho,
+  &__reg {
+    position: absolute;
+    top: 11px;
+    right: 11px;
+    color: $color-back;
+    background-color: transparent;
+    align-self: flex-end;
+    @include fontSetContent(700, 14px, 16px, $color-btn);
+    padding: 0;
+    transition: all 0.2s linear;
+
+    &:hover {
+      transition: all 0.2s linear;
+      color: black;
+    }
+  }
+
+  &__title {
+    text-align: center;
+
+    @include fontSetContent(700, 50px, 50px, $color-text);
+    margin-bottom: 13px;
+  }
+
+  &__label {
+    margin-bottom: 3px;
+    padding-left: 8px;
+    @include fontSetContent(700, 16px, 16px, $color-text);
+    position: relative;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    max-width: 100%;
+    position: relative;
+  }
+
+  &__star {
+    position: absolute;
+    top: 7px;
+    left: -12px;
+  }
+
+  &__check {
+    position: relative;
+  }
+
+  &__check-star {
+
+    position: absolute;
+
+    top: 4px;
+    left: -12px;
+  }
+
+  &__input {
+    width: 100%;
+    max-height: 49px;
+    background: $white;
+    border: 2px solid $color-text;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-top: 7px;
+    padding-left: 15px;
+    @include fontSetContent(700, 28px, 36px, $color-text);
+    transition: border 0.3s ease;
+
+    &:focus {
+      border: 2px solid #323131;
+      transition: border 0.3s ease;
+    }
+
+    &::placeholder {
+      @include fontSetContent(700, 28px, 36px, $color-placeholder);
+    }
+  }
+
+  &__label+&__item>&__star path,
+  .checkbox__mark+.checkbox__label::before,
+  &__check>&__check-star path {
+    transition: all 0.1s linear;
+  }
+
+  &__label[class~="color_red"]+&__item>&__star path {
+    fill: $color-errors;
+    transition: all 0.1s linear;
+  }
+
+  &__check[class~="color_red"]>&__check-star path {
+    transition: all 0.1s linear;
+    fill: $color-errors;
+  }
+
+  .checkbox__mark[class~="border_red"]+.checkbox__label::before {
+    transition: all 0.1s linear;
+    border: 2px solid $color-errors;
+  }
+
+  &__alert {
+    @include fontSetContent(500, 10px, 16px, $color-errors);
+    margin-bottom: 13px;
+
+    &_pdg {
+      padding-top: 3px;
+    }
+  }
+
+  &__btn {
+    margin-top: auto;
+    align-self: center;
+    width: 180px;
+    height: 52px;
+    background-color: $color-btn;
+    border-radius: 10px;
+    @include fontSetContent(700, 24px, 16px, $white);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #0c1457;
+      box-shadow: 0px 0px 20px 10px rgba(56, 30, 159, 0.25);
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+.login-form {
+  @media screen and (max-width:768px) {
+    max-width: 728px;
+    min-height: 697px;
+  }
+
+  &__btn {
+    @media screen and (max-width:768px) {
+      margin-top: auto;
+      margin-bottom: 242px;
+    }
+  }
+}
+
+.border_red {
+  border: 2px solid $color-errors;
+}
+
+.color_red {
+  color: $color-errors;
+}
+
+.valid {
+  color: $color-btn;
+}
+
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}

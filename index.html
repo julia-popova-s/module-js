@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Registration - Log in</title>
+  </head>
+
+  <body>
+    <section class="registration visible" id="reg">
+      <div class="container">
+        <form class="login-form" id="reg-form">
+          <button class="login-form__autho" type="button">Авторизоваться</button>
+          <div class="login-form__title">Регистрация</div>
+          <label class="login-form__label">Email</label>
+          <div class="login-form__item">
+            <svg
+              class="login-form__star"
+              width="9"
+              height="8"
+              viewBox="0 0 9 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.99707 4.54492L0.237305 3.7627L0.755859 2.17188L3.48926 3.27051L3.31348 0.203125H5.03613L4.86035 3.33203L7.52344 2.25098L8.04199 3.85938L5.22949 4.6416L7.0752 6.97949L5.67773 7.97266L4.07812 5.40625L2.49609 7.88477L1.09863 6.93555L2.99707 4.54492Z"
+                fill="#787878"
+              />
+            </svg>
+
+            <input class="login-form__input" type="email" name="email" autocomplete="on" placeholder="Введите email" />
+          </div>
+          <p class="login-form__alert"></p>
+
+          <label class="login-form__label">Пароль</label>
+          <div class="login-form__item">
+            <svg
+              class="login-form__star"
+              width="9"
+              height="8"
+              viewBox="0 0 9 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.99707 4.54492L0.237305 3.7627L0.755859 2.17188L3.48926 3.27051L3.31348 0.203125H5.03613L4.86035 3.33203L7.52344 2.25098L8.04199 3.85938L5.22949 4.6416L7.0752 6.97949L5.67773 7.97266L4.07812 5.40625L2.49609 7.88477L1.09863 6.93555L2.99707 4.54492Z"
+                fill="#787878"
+              />
+            </svg>
+
+            <input
+              class="login-form__input"
+              placeholder="Введите пароль"
+              type="password"
+              name="password"
+              autocomplete="current-password"
+            />
+          </div>
+          <p class="login-form__alert"></p>
+
+          <div class="checkbox login-form__check">
+            <svg
+              class="login-form__check-star"
+              width="9"
+              height="8"
+              viewBox="0 0 9 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.99707 4.54492L0.237305 3.7627L0.755859 2.17188L3.48926 3.27051L3.31348 0.203125H5.03613L4.86035 3.33203L7.52344 2.25098L8.04199 3.85938L5.22949 4.6416L7.0752 6.97949L5.67773 7.97266L4.07812 5.40625L2.49609 7.88477L1.09863 6.93555L2.99707 4.54492Z"
+                fill="#787878"
+              />
+            </svg>
+
+            <input type="checkbox" class="checkbox__mark" id="checkbox-reg" name="rules" />
+
+            <label class="checkbox__label" for="checkbox-reg">
+              Я согласен с <a class="checkbox__link" href="#">Правилами пользования приложением</a>
+            </label>
+          </div>
+          <p class="login-form__alert login-form__alert_pdg"></p>
+
+          <button class="login-form__btn" type="submit" form="reg-form">Регистрация</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="login hidden" id="log">
+      <div class="container">
+        <form class="login-form" id="login-id">
+          <button class="login-form__reg" type="button">Зарегистрироваться</button>
+          <div class="login-form__title">Вход</div>
+          <label class="login-form__label">Email</label>
+          <div class="login-form__item">
+            <svg
+              class="login-form__star"
+              width="9"
+              height="8"
+              viewBox="0 0 9 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.99707 4.54492L0.237305 3.7627L0.755859 2.17188L3.48926 3.27051L3.31348 0.203125H5.03613L4.86035 3.33203L7.52344 2.25098L8.04199 3.85938L5.22949 4.6416L7.0752 6.97949L5.67773 7.97266L4.07812 5.40625L2.49609 7.88477L1.09863 6.93555L2.99707 4.54492Z"
+                fill="#FFFFFF"
+              />
+            </svg>
+            <input class="login-form__input" type="email" name="email" autocomplete="on" placeholder="Введите email" />
+          </div>
+          <p class="login-form__alert"></p>
+          <label class="login-form__label">Пароль</label>
+          <div class="login-form__item">
+            <svg
+              class="login-form__star"
+              width="9"
+              height="8"
+              viewBox="0 0 9 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.99707 4.54492L0.237305 3.7627L0.755859 2.17188L3.48926 3.27051L3.31348 0.203125H5.03613L4.86035 3.33203L7.52344 2.25098L8.04199 3.85938L5.22949 4.6416L7.0752 6.97949L5.67773 7.97266L4.07812 5.40625L2.49609 7.88477L1.09863 6.93555L2.99707 4.54492Z"
+                fill="#FFFFFF"
+              />
+            </svg>
+            <input
+              class="login-form__input"
+              placeholder="Введите пароль"
+              type="password"
+              name="password"
+              autocomplete="current-password"
+            />
+          </div>
+          <p class="login-form__alert"></p>
+          <div class="checkbox login-form__check">
+            <svg
+              class="login-form__check-star"
+              width="9"
+              height="8"
+              viewBox="0 0 9 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.99707 4.54492L0.237305 3.7627L0.755859 2.17188L3.48926 3.27051L3.31348 0.203125H5.03613L4.86035 3.33203L7.52344 2.25098L8.04199 3.85938L5.22949 4.6416L7.0752 6.97949L5.67773 7.97266L4.07812 5.40625L2.49609 7.88477L1.09863 6.93555L2.99707 4.54492Z"
+                fill="#FFFFFF"
+              />
+            </svg>
+            <input type="checkbox" class="checkbox__mark" id="checkbox-input" name="toMail" />
+            <label class="checkbox__label" for="checkbox-input"> Я согласен получать обновления на почту </label>
+          </div>
+          <p class="login-form__alert"></p>
+          <button class="login-form__btn" type="submit" form="login-id">Войти</button>
+        </form>
+      </div>
+    </section>
+    <script src="./js/login.js"></script>
+  </body>
+</html>
