@@ -456,19 +456,6 @@ textarea {
   padding: 0.2em 0;
 }
 
-@-webkit-keyframes showFormRegistration {
-  0%, 49.99% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(20%);
-  }
-  50%, 100% {
-    opacity: 1;
-  }
-}
-
 @keyframes showFormRegistration {
   0%, 49.99% {
     opacity: 0;
@@ -556,13 +543,15 @@ body {
 
 .registration,
 .login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #1B2473;
-  padding-bottom: 243px;
-  padding-top: 82px;
+  height: 100vh;
 }
 @media screen and (max-width: 768px) {
   .registration,
-.login {
+  .login {
     padding-top: 20px;
     padding-bottom: 20px;
   }
@@ -574,15 +563,12 @@ body {
   border-radius: 20px;
   max-width: 600px;
   height: 412px;
-  margin: 0 auto;
   padding: 27px 45px 26px 45px;
   display: flex;
   flex-direction: column;
   transition: all 0.3s linear;
-  -webkit-animation: showFormRegistration 1s;
-          animation: showFormRegistration 1s;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
+  animation: showFormRegistration 1s;
+  animation-fill-mode: both;
   position: relative;
 }
 @media screen and (max-width: 768px) {
@@ -669,12 +655,6 @@ body {
   line-height: 36px;
   color: #CCCCCC;
 }
-.login-form__input:-ms-input-placeholder {
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 36px;
-  color: #CCCCCC;
-}
 .login-form__input::placeholder {
   font-weight: 700;
   font-size: 28px;
@@ -706,6 +686,7 @@ body {
 }
 .login-form__alert_pdg {
   padding-top: 3px;
+  margin-bottom: 10px;
 }
 .login-form__btn {
   margin-top: auto;
@@ -752,7 +733,7 @@ body {
 }
 
 .visible {
-  display: block;
+  display: flex;
 }
 
 .hidden {
