@@ -1,8 +1,12 @@
 .registration,
 .login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
   background-color: $color-back;
-  padding-bottom: 243px;
-  padding-top: 82px;
+  
+  height: 100vh;
 
   @media screen and (max-width:768px) {
     padding-top: 20px;
@@ -16,7 +20,6 @@
   border-radius: 20px;
   max-width: 600px;
   height: 412px;
-  margin: 0 auto;
   padding: 27px 45px 26px 45px;
   display: flex;
   flex-direction: column;
@@ -136,6 +139,7 @@
 
     &_pdg {
       padding-top: 3px;
+      margin-bottom: 10px;
     }
   }
 
@@ -184,7 +188,7 @@
 }
 
 .visible {
-  display: block;
+  display: flex;
 }
 
 .hidden {
